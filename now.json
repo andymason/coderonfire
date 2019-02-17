@@ -1,0 +1,5 @@
+{
+	"name": "coderonfire",
+	"version": 2,
+	"regions" : ["bru1", "iad1"]
+}
