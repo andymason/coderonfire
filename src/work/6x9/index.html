@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>6x9: Virtual Reality Solitary Confinement - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">6x9: Virtual Reality Solitary Confinement</h1>
+        <p>6x9 is the Guardian’s first virtual reality experience, placing you inside a US solitary confinement prison cell.</p>
+
+<p>As the creative technologist, I was responsible for overseeing the interaction design, technical development and delivery of the VR experience on multiple platforms including GearVR, Google cardboard and 360 video.</p>
+
+<p>I also designed and developed the <a href="https://www.theguardian.com/world/ng-interactive/2016/apr/27/6x9-a-virtual-experience-of-solitary-confinement">WebGL promotional site</a> that used optimised 3D assets and shaders for desktop and mobile.</p>
+
+<p>A custom <a href="https://www.theguardian.com/world/ng-interactive/2016/apr/27/6x9-a-virtual-experience-of-solitary-confinement?debug=true&amp;editor=true">in-browser editor</a> was created for fine-tuning animation timings and help debugging.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/webgl">WebGL</a> </li>
+
+    <li><a href="/tags/360-video">360 video</a> </li>
+
+    <li><a href="/tags/virtual-reality">Virtual Reality</a> </li>
+
+    <li><a href="/tags/unity3d">Unity3D</a> </li>
+
+    <li><a href="/tags/the-guardian">the Guardian</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    <div class="video-container">
+        <iframe src="https://player.vimeo.com/video/244207249?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+
+    <figcaption>
+        The 6x9 trailer provides a glimpse into the virtual reality experiences and includes some of the voices you hear while in the prison cell.
+    </figcaption>
+
+</figure>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="https://www.theguardian.com/world/ng-interactive/2016/apr/27/6x9-a-virtual-experience-of-solitary-confinement?debug=true&amp;editor=true" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAAcBAAAAAAAAAAAAAAAAAAECAwQFBgf/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAeTDgwRQCiRE8tCYZ&#43;ynDW9uZRlZoADLqNUaEupJVtUc5ucopLb6wmKebABZ0mXoaIJ0NVAOX6xjZoltNYRLVzQAOHU5elpHLoZKg5FrGJmkLJRIypih06XL0JGS8hmqk5TrGOmkKQQ&#43;GKFmujYjpcxVU0YTWMvNJUwiOEABMi1LYthcP1kbnMKlTANgAEGKFw&#43;aCLYz&#43;s59UKYBIYQYQABj8TBmyEoAEf/EACYQAAICAQQCAQQDAAAAAAAAAAECAAMRBAUSIRMxIBAiIzIGMEL/2gAIAQEAAQUC8sF5llnL6hTFpYyvRWNKtsYw7dxGqp4ExfelmpVeP1E0mlNk022SnbUEr0SCeFBNWg47iO39r7p9XMfgnvYqwwWjC47VTixDL6/x7qMM/tfdXq34J&#43;38dn&#43;K1yyKMWqJqh&#43;Pd/3f3FfEZ8zExOMRO9h&#43;2eUcVuAaq0EX2AS9817r27J3wnEzjMTr6K3e2agLEvDhQc0sQur1BBFuatyP3Me8zM6mZmZmZVaVlWtZZVubCVbrDf5T5MJrzmMe8zMz8sznEs7014htBXVtG9/1qxEWx5YxMPw//8QAGBEBAQEBAQAAAAAAAAAAAAAAATAAAmD/2gAIAQMBAT8Bq4t1iziz43//xAAXEQEBAQEAAAAAAAAAAAAAAAABADBg/9oACAECAQE/AdSdidieb//EABoQAAMBAQEBAAAAAAAAAAAAAAABMTAgECH/2gAIAQEABj8C6hCEz&#43;ohCePFcseK5Y8Vyx5UvDypeHrS73r/xAAcEAADAAMBAQEAAAAAAAAAAAAAAREQITEgMEH/2gAIAQEAAT8hsSXRuTHEc9j9ydIbFi5ELHg3lN34Ssi6EuBKqCvkavBRiIZgeB5S&#43;OJpAVZITKUN4F2zAOuBkHU8cDgMq2Z0IWYqJsSixOOkaAtFs7w6ESdFmULhWJuRgmhCEnZoJatDoidpYrKgkSQN&#43;Qcx4J0BRRsXSj0aVekFzROJhy6JFcGFu7GwpfgmcpkQ6zOhZ//aAAwDAQACAAMAAAAQAAES0BGkkmk4yIvkkhmCtB0kEJJxs2AEFrKtEgglowVMkEk1MY1AAAgCTWMAggkgyEAn/8QAGxEAAgMBAQEAAAAAAAAAAAAAAAEQMEERMUD/2gAIAQMBAT8Qq6Ku7DhS80chmiha7NFCdEuVM0VrNFazRWs0Xx//xAAaEQACAwEBAAAAAAAAAAAAAAABEQAgMBBA/9oACAECAQE/ELOPQcfjBkGooDCamo1XBuNF0QeT/8QAIhABAQEAAgIBBQEBAAAAAAAAAQARITFBUWEQIHGRoYGx/9oACAEBAAE/EA/NgJ3LLrsC9EvyS5q34kDyfEML/q3&#43;keoQYZaBdUzB8Q2E3PswCTQ0bVfxv&#43;aUW8HxcD/RCUurpHluDuizkZ6ln2DfzWyFhgTiyxEuGH4ZDDxYP5fpOiMJi&#43;z&#43;yzz/ABZDnq2I8wxwdWZ4LM86Y/sbunjsmGzeUeiE8SfFqs83MnOoJB1FQHcDQdSjRZ&#43;7w3GPbMbnmfXZeIPiBgEP1AGwKSAAde4Ft/25f1PdzG7lf2ECvltSJ38E46L87XuVDHuRNSWMfHzYOn7lLu/MWetgY&#43;Fqt93J/ML3D9ys7t&#43;jbYZC8xfMKdRA/tKMHXuJzq0Vv1Cbbx9iDw2JuXG7iHmkq&#43;hi/9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_webgl_editor_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_webgl_editor_320x.jpg 320w,
+                    /images/projects/6x9/6x9_webgl_editor_460x.jpg 460w,
+                    /images/projects/6x9/6x9_webgl_editor_640x.jpg 640w,
+                    /images/projects/6x9/6x9_webgl_editor_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_webgl_editor_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        The <a href="https://www.theguardian.com/world/ng-interactive/2016/apr/27/6x9-a-virtual-experience-of-solitary-confinement?debug=true&amp;editor=true">in-browser editor</a> was used to create the website animations and tune shader settings.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFAgYBAP/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAVsU4EAlSXpCfz1Fsl7i9ggRQWwTEaVseJh7m2eekss0bcBvKtJIZWyYMDpTFoPjVjjqaOZu&#43;mZPbM7USCjBMQquFAWgmLV5bTLmL90zz/bM7UTGAxMTasDQiCB4qldXi2DnumUKANjJMQamNnhs50XK8dAJUkKI6tMnImeH1roSJxtdJswJIkUVuCCSROlzxdFGHj4&#43;MCoBHC0qSSwIOgmoeUx6aNGTKEH1UT//xAAiEAADAQACAwACAwEAAAAAAAAAAQIDBBESITEQEwUgIkH/2gAIAQEAAQUCR0XkJdPDpvPKPDeEaouWPJjxY8jix0P5qSSTPa3z6eCol2lrVGeTsfH6Hki5KkxRXzUkgz&#43;bfePKFC62hd8ePWqNCyjIo1JIJfrWzHXonddaary4fVTyV0astlGRZqJks8vWtHk0PleI&#43;X2/43l&#43;ttfJbV7dDZiyjUTFR5CXZpP&#43;dofks2canBO3c60OitDjWV81PIehOpOslbT02m&#43;vwq6Lsqy6OG/bfrU8jW2fsZ&#43;6ha0Y0eR5HYykOTjen360f4aQ5Q5RMoj&#43;&#43;f3/AJof/8QAGxEAAgMAAwAAAAAAAAAAAAAAAREQIDAAQGD/2gAIAQMBAT8Bsu4KHMQ4Ojh8fg//xAAcEQACAgMBAQAAAAAAAAAAAAAAAQIREBIwIGD/2gAIAQIBAT8B82bCfRjeU&#43;csWNkRcpIooaIi56mo4iXwf//EABUQAQEAAAAAAAAAAAAAAAAAAGAx/9oACAEBAAY/AgdCf//EABwQAQEAAgMBAQAAAAAAAAAAAAEAETEQIUEgUf/aAAgBAQABPyGmZZO8XVMQZu&#43;6iriKY6k&#43;X4J7M&#43;KMMamE2G92bdgxjUTyE8isD9HAPwRoRpDj5/XmdjnZD6vRlbcaGV38C46fGzGOsAza2b3bojCy5u18Xa/MuTw1KypoukWyvFibOyi4gewZ3G9nY54GCwEsyTWR5QUzwQPAp3O7tOR9SM3FeKNTmw9WRq/BENWYYeEkLpMxX//aAAwDAQACAAMAAAAQwFtTz6x8pMhEYYupvj7uqBdJfy1RgrFJDk3MBaByWZKeLbgRFt&#43;BaD0VJKXLbp4ptH8f/8QAGBEBAQEBAQAAAAAAAAAAAAAAAQAQESD/2gAIAQMBAT8Qi5vIiSXLmGm8iDOdk8HsQSQQnTTwrswcOMY&#43;GHHYjpjz3eXPRjnfB4dMfR5cJn0eXDf/xAAaEQEAAwEBAQAAAAAAAAAAAAABABEgEDAh/9oACAECAQE/EMLEBHhGX18QFy6l8HyUWEfSPB3ZGSamHow9IkYOOuHqkrDmuu3BhyeTt7//xAAgEAEBAQEBAQEAAQUAAAAAAAABABEhMUEQcVFhgaGx/9oACAEBAAE/EDrcaUInwyHMTSusuHcgKEqxX3V9ShPkx8j/AKx9vdtl3JOiYRm2JOMlMdm8G2DSXi1uLZ5GHLmfcuk&#43;kz8aYmhK8nl5YewVIRcgC2e3qHY0&#43;zxsUvuRHuaOLiZ8iXHsgOnkLiAXYVbR/KavbtZJ2&#43;pYsbsrdz8/3kHPuL/oJCNcvuW77Dvsb9mVHfzA&#43;zswbusOsPlli&#43;ww9uiJkx9OWg7Gb25u2Eba6vaAfYWN6hholAHk4TLL0jwXIGQewF7JrsuO2p/i9ZM9hb1H&#43;tg&#43;tmFWKqAer&#43;U7&#43;zKkmU&#43;RS20/xvSA93QH4A8ayGmMlZ7Js09Iv6SvkQclfcnb/9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_360_cell_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_360_cell_320x.jpg 320w,
+                    /images/projects/6x9/6x9_360_cell_460x.jpg 460w,
+                    /images/projects/6x9/6x9_360_cell_640x.jpg 640w,
+                    /images/projects/6x9/6x9_360_cell_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_360_cell_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        The prison cell was rendered in real-time on VR devices while a 360 video was created for other platforms and is <a href="https://www.youtube.com/watch?v=odcsxUbVyZA">available on YouTube</a>.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAwQBAgUGAAf/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAH5QePBAkUqkVDzWlnTC428Z1zQkdPHjQlYKalkTFJWs3Wx1bOT6ckrJHzxBp5ry23g9c9CkuxjXQc&#43;02c1vnz28SPHiDQl1c3C1IKBJWC01eNmXjOnNax4gsN50xFVkgAgKCFl63HRC55npztYSHJq8rc03mjsVsVsgAUOgxs0o9Z5bry086NKAfzpiUVAQVDsAgTXzp7OqVzfXhs53UCa&#43;NiFLBVRRXPkWsVs28bem83fLYztWs9naxuBdF6z9RO5pYKyozL1nLr/AP/EACQQAAICAgICAQUBAAAAAAAAAAECAAMEERIhEBMgBSIxMkFC/9oACAEBAAEFAvKruFNTU4zUTQldsYCwX1FYfljDZyFlNBsluMVhqjDUpG5UDLKeSZCcW&#43;OH&#43;codYN6pMzIVg1sY7mCuyVVQrKZ9Rr7&#43;OK2myHDJ/TszhOEps9ctyiZi2nnk1eyu5CreQIiTiZ6zPXOOo0MMpOmos2mXQGllZUxRuBdQHUrPho0M4x1lY&#43;6pdLyj0LZBKVjT&#43;oOo0M1GjQdGi&#43;N2EfjKl2VXS6n&#43;kG0MsMBhabnUdhOeji37jiYQG7R1LP2xf0f8kRpZCTCxhPik/dT2n//EABkRAQADAQEAAAAAAAAAAAAAAAEAESAQMP/aAAgBAwEBPwHwJfE9SESOiOSHHRipXLgxI5qVKlaIkr3rhusD73B4YPEhP//EABoRAQADAQEBAAAAAAAAAAAAAAEAEBEgMED/2gAIAQIBAT8B8crfLJlsHthWzabOnvIwe9mzeWh6fBrafNPgSnh8WM//xAAbEAACAwADAAAAAAAAAAAAAAABEQAhMCBAUP/aAAgBAQAGPwLw7lcVHu90YxveyMY3RjHQ/8QAHBABAQEAAwEBAQAAAAAAAAAAAQARECExQSBR/9oACAEBAAE/ITlHL64szLkgoPV15yyyOMLzi9cmJ1NBMW2W2ftz3K5NBH21R9127IxFgwT7&#43;TLbqkidGXoxpklo6vtzhrFi/k6M43hGaVPea0&#43;Bs6OwFC8hDbrFwtvbDkOtiytomhHzPAOHXrxCY6jzgNnLKSkneLqAUKsZLWt3kPquk3yXO&#43;NLLflh6lg0tyHd4DpHk8qXhkxAlavb&#43;iR4YGN1dv/aAAwDAQACAAMAAAAQkA4zbokEgAnabYgAHjLzJUEAjWiI5kAK6m9eCU90RyPVxhSyHESvjLP&#43;kqsQAnpeegA//8QAGxEBAAMBAQEBAAAAAAAAAAAAAQAQESAxITD/2gAIAQMBAT8Q4zhQlN/AI1s2bQfKBnYVkyj9mAiw9mZMhQfJujQgzjIcBnBFpW4oJkIWkyBEhAp3QohaUeH2ggTIQpYM2NLb94s8UzIxYvDzP//EABoRAQEBAQEBAQAAAAAAAAAAAAEAERAgMSH/2gAIAQIBAT8Q8b4Zg5HsxB0SZcB9lD0Wc7BP0Ittltk2KLBh3xsvgb5P5zHeLb4Ec2GZcM8XXhDbHh&#43;WSy2zLwssjgWeAd&#43;oiIss8n//xAAdEAEBAQEBAAMBAQAAAAAAAAABABEhMRBBUWGB/9oACAEBAAE/EBJZZgIziTFYM&#43;PNgAB5KftychZBWPwRxM9RDTbOYZe9Ml2IxsHtkZrB9HJqhuT4GY/BHk33HSWdm4k/25R3JSCfaJEIKiNDybmEchDyW3s7L7i4jck6hEYje1D63WXkFg7cPrZE1ikQb8HEvZny2iOWP0wz2GeweJDkVnkQPjHG3kYbf5PxXwMfIBUk4J84uHhIDyZj8aYdgClgH9jqfUg/VEaGt2hFzWPCRJOWJbH/AGzXYsjlgMiFQKLelsSIAbADM5La5CGP7AX8Q2kFnaheMt1jGqQhMWkEsrZf1CJY2LYyIuQc/bqH6iCiOkpwkNxhrI0iHX458dv1PL//2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_cardboard_mobile_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_cardboard_mobile_320x.jpg 320w,
+                    /images/projects/6x9/6x9_cardboard_mobile_460x.jpg 460w,
+                    /images/projects/6x9/6x9_cardboard_mobile_640x.jpg 640w,
+                    /images/projects/6x9/6x9_cardboard_mobile_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_cardboard_mobile_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        A dedicated mobile app was built first launching on the Samsung GearVR and later Google DayDream. The 360 video version appeared on Google Cardboard and YouTube.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGgAAAQUBAAAAAAAAAAAAAAAAAwABAgQFBv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHqCZimWMPD045CJkxgxsh6IcSc6WYuESwCM0DZel0DbjZolEOJOcLcagEvQGsOyiXZd86SLtKjnDnOk4sCCgqooIty6h0MbVEqRxBzo0THHAgLHi0t02jo61AZw5zo0Hg5MpGfYcsSyNGuzrThqxUojCFDkQdTCQ6zNuiQegWCRCEIQhDlqWaopFoIREIQhCEIcQj/xAAmEAACAQMDBAEFAAAAAAAAAAAAAQIDBBESFCEFEDEyQhMVIjBB/9oACAEBAAEFAsGOLm40N3huzdm7N0bs3YrtG5NyQr5KEsp&#43;fj1P2yU1k&#43;nxp5VIlTwVuCnNikUoaihQIR0j8/HqfsUmKXGeYSWKskXBDzDzayKMuy8v16n7EWKZqFMlMqMgQKLwW8imyKJ&#43;vUvbssmGckiTICISLeZRfBPx1NflhmCImjgrIaZTiYFkoS5s&#43;Y5H4uLbW9ijYI2CNijYjsEz7chWCRsUbAjY4dvT0JdpxNLMMwzDMMwzSzSxRZHv/Y/u/8QAFBEBAAAAAAAAAAAAAAAAAAAAcP/aAAgBAwEBPwEH/8QAFhEAAwAAAAAAAAAAAAAAAAAAEVBg/9oACAECAQE/AaIJf//EABQQAQAAAAAAAAAAAAAAAAAAAHD/2gAIAQEABj8CB//EAB8QAAMAAgMBAQEBAAAAAAAAAAABERAhMUFRIGFxMP/aAAgBAQABPyFJRzQqQi8iX4v9jX0c7J9wowGob2HdlXAT7CfQY0OFGzkt2Pg4WyY3DR5zskxZnFIBqsDCENAtm&#43;HzjIGg5kVyX7LoQ5FSNKKIYhnRzjwjDGSM0aMXjxbkUMQisZY/IrwedDHR/B4Ic6HeF&#43;Cox6QeWC0K3n5/C0Yj8TrsEvo2kNINsXAxv/F/8aBNEXxQiIiERERERERfH//aAAwDAQACAAMAAAAQAAGkGSyUEggExQyAEUiFWP0kCyoqwekEwER4AEgCyWZygsbp/ZrwBiJJJJNAAkkgkkkH/8QAGhEAAwADAQAAAAAAAAAAAAAAAAERECAwQP/aAAgBAwEBPxD0p9mLsxdmLsxavFKUpSlzd4QhCEIQgvF//8QAGhEAAwEBAQEAAAAAAAAAAAAAAAEREDAgQP/aAAgBAgEBPxDjdvWbRckMerkhj1c2XV5flD1YnchCEITEIQhMSmUpfNKi/H//xAAgEAEBAQACAwADAQEAAAAAAAABABEhMUFRYRBxkaGB/9oACAEBAAE/EHUkEib1PhXmB7gPmPqeGQbzPCpfqBXuUwsJZdMr&#43;qFi&#43;bXsys5lQaNDFPcicWVlU6CI8ozBEAfg4L9R/rZAC4DjqebYO5KQZGmWyNiLBgTk0cQ5o4v1f6Zc2uUxs71svDF1PNXNt0zcq15IgW70sR8mv7Ls2u8QHG3pMB1Z7nZmNbIYhObiNkJLLxf8lIxPNoeVm9rNzOwgMhmtMZqw8q&#43;6DOMPOxIfVz4kY9zRHdp4SngvgQXiBguQlXp/IjgR6SOl/iwhMvHVtzbDNIfkvl&#43;L5fi&#43;P5CzOk&#43;iAOpUwe7mEjOp9F8LHq&#43;F8L4XwvhHogyeov/Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_unity_audio_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_unity_audio_320x.jpg 320w,
+                    /images/projects/6x9/6x9_unity_audio_460x.jpg 460w,
+                    /images/projects/6x9/6x9_unity_audio_640x.jpg 640w,
+                    /images/projects/6x9/6x9_unity_audio_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_unity_audio_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Unity was used for interactivity prototyping and audio positioning.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="https://www.youtube.com/watch?v=dqyZo7TuQmo" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAwADAQEAAAAAAAAAAAAAAwQFAgYHAQD/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/aAAwDAQACEAMQAAAB5Ud9tlibEs3DRMtvQfQXSN0wpglUrbTgNBqo9vNjIz/N0T&#43;rmybUZVblZG/PtJSqKsqs7KvjppL4LAaMA1z2H0R9YUpWqSvJ6eS9fnIxRgSgj21adbYpsEenVWiqB8y1aIBkqB5lJHvJXb6RozbwnSqK0Hsc/UORAyEYbNeM0A&#43;0dlPRRbFRnptRRuZdMcjmlduNaKVbBPbmGtMcEaSvsJmBVb1S2p55eQtnkpmrPRu6j0CuIZgEtY9Otz65l5ycQF1Tp95gU2pXGCXn6X50NiQHLam0&#43;t9nBqTLy0isrboleW9fKqM0D7zdIIdD03LjltltUZOu9XFoTLz9hTVt6Sv/xAAlEAACAgIBAwQDAQAAAAAAAAABAgADBBESBSEiEBMxMyMyQSD/2gAIAQEAAQUC16qu4a5qampxmMPLHPjX3jLqEy5pxnCalfyR4kdwJRVyN&#43;PxWgaen4qbjLLQQWjDcRZXTyj4fi1fBgO3Ce3MbsbNMvHT4utZFgEFu4GllmoramG4jMvDL1z32TuVoJXiQyDxt/dbNCywmVtEMsTlC0ptKxMrYtO5rcqUhq3Htk/kss0pbba7ERElcX0BlbT3JjssYrF&#43;APK5TqpCbDjtwZCCpAgI2H9a6yRrRqBiqYvxo7/mJXu7HxEenq2ItaufJNmKrR6yJx7458bV71HUDQNOc5TBP5cL6ev2dn/bBQFqsVCpEIG6xLIsX/GB9uJ9HXyd/wBxiQenOTP/xAAeEQADAAIDAQEBAAAAAAAAAAAAAQIQEQMSICETQf/aAAgBAwEBPwHKOvjWUjXqRr4PETsrjGsIeep1PzFOj&#43;Dk6nH8G0cmEzedkfRIpYZs7Hcpj8aNk1oXKPFe0vKZ3JLxMlT63lSdSZHB&#43;Qo0OCuMfuaF9JNmzZssvKNZRxi80VlEn//EAB8RAAMAAwEAAgMAAAAAAAAAAAABAhAREiADIRMwQf/aAAgBAgEBPwHLOvG/1Wb&#43;ycXWhWJ4a8dnR2VWz&#43;k2dlfYiCUUhrPI1obE8I5NHIiRjxs0VOyozPlGxj8Utn4ykSbGxPG8vw6OiqOjsdisXyCeX4cj&#43;ivMk5ZvLLH5knLGf//EAB0QAAEEAwEBAAAAAAAAAAAAAAEAECEwESAxQFD/2gAIAQEABj8C&#43;TFWa8eGVGvFNoXESLQxDTWGOn//xAAdEAEBAQADAQEBAQAAAAAAAAABABEQITFBcVGh/9oACAEBAAE/IZkHEyNvUC78cDYGFc8k78lfy2fOLbhu7ju8CWGpJF3xHR59v8vYE&#43;NpQrdGwcpIr3N6yT6tLDDHpvAegjMXTdERh2O2UXMb7HDtILtlfZO5em2OoEt0sbCxOM264vtPHLGS8eLO&#43;rBEs1d4/pZqHsV19DZC1dcz7bSVgyjq2Tel6bdy3mPsQ0eRcTDCTWPx4QZ4iMJe0vNzZw7/AKS6fkFHrg0LYECd3zI43u8xHH&#43;yfX8vdcRGWULf/9oADAMBAAIAAwAAABD/AFwv3x6768IomA863&#43;goYUTzA08pxU9iYn7WKaokEiGLwVRD14r61aMa07lbiqjWH6gP/8QAGxEBAQEBAQEBAQAAAAAAAAAAAQARECExIEH/2gAIAQMBAT8Qzo2cGzEe8PNbxzYJLI&#43;8B95ssCyv7MyfMhRNMikmrzhTCxstjeoZbJYUIRbb5LJvhtZadEXqVOrYye&#43;xDyXjMkHAIObZsVjYyT21s5JIhy2OCdjDzROHm1j7HHpY2w&#43;whek8iYsWJGX107Bi2T0Px833PSv/xAAaEQEBAQEBAQEAAAAAAAAAAAABABEQITEg/9oACAECAQE/EOrCDsO8XLEMsts2c22WEOrSbBbNtfZObbInmAhmBPibAjxpDlhwNtLMJNmSz2C2o831HJS5YxAsFjBjZfUHnCJTHwvcU&#43;rGGPGNvDEWYWcWxnV6xnnSwtrQtjpJJlvC9Pcsvu&#43;JiXWQOz1vq&#43;Pyf//EAB8QAQEBAQADAAMBAQAAAAAAAAEAESExQVEQYXGBof/aAAgBAQABPxBZ6ihkak5JBiyZlvgIZ1L/AEdm99W/C2DY726N6qK&#43;U&#43;dOAMHh9Sb5OkYBEvYjIbo8YofI282GE22OxrW8GkAR9er8tKMxuT&#43;pksdoT3LI4PLlj3YBS5YTmTzNu9tgawUiSzniCQHmLGch7b9JIV35v4DBpPsewTaqZ16yEucleGMooYv&#43;4er5jlYmXNj6ZuW3/dsz1a&#43;PuBOrRxmyZKgxoTjY8Ww3YCasziNGNgOXmQbL2UukjjHdiTRnyWagPstiTbIGLHbMnkstG7I2I6YJVbHgOEJQ9ROeGbvv4hgjjNxwYgGsgMamEFWeWTLXNYyaBYRQY/40e8Bs&#43;xKPsHZ8zoxy242BRThAH4Rx&#43;Qk/5phC4DwnqX7MTy6dl//Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_robert_de_niro_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_robert_de_niro_320x.jpg 320w,
+                    /images/projects/6x9/6x9_robert_de_niro_460x.jpg 460w,
+                    /images/projects/6x9/6x9_robert_de_niro_640x.jpg 640w,
+                    /images/projects/6x9/6x9_robert_de_niro_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_robert_de_niro_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        6x9 appeared at Tribeca film festival where Robert De Niro watched it. He later talked about the experience on <a href="https://www.youtube.com/watch?v=dqyZo7TuQmo">The Tonight Show with Jimmy Fallon</a>
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABQYCAwQBBwD/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/2gAMAwEAAhADEAAAAfWduWq5ptU6TVSqogFoSlxTi5k8&#43;i&#43;FNJg871IOYucGmaVTBlVJvga87HK8tzt0y4s19I9UOfL6HwqAQ6jyQeAq0PQmHh4kVNbbQOBMlH7n0rQ&#43;zsJDVWgQuN9RSNztFh6EUACgWIecTp6HNXnZ6Wdig4xQqATsdbymRUbZ1PMpmgGJT0yMVbrcG0hYIYRDvHtw10XsV6Mb7xx8taoCGOnk/fzkKXoNS2pZxJSYMMnLoP2rQW5aCgs9OJqDRxbifT5d2ksshrJDIa3mxgZSs25Abznsn1nQ87AN8fVs6eVu6o0S1rkBeLiiAUOx26w6Nr59l3SKbz3wGebr/8QAIxAAAgICAwACAgMAAAAAAAAAAQIAAwQRBRIhEDIUIhMkM//aAAgBAQABBQIrCsKwrCIdTsIJ1mvjU18a&#43;NQrMghFy&#43;SVGu5WY/JdnxLQ6Paqx8kQ5IlN25lZIrWvkR/JXmKZ2E2I9qgc1yAVcnIZ3NhlNhVuLzfLbe0OzCDKm6zlbzpbiHpyTEzTLeQ/WzLtsmbRdaWwLIOPsjYDqKHNNmPkBlQgzpH8mbUzx8V1Oys/KENnaceoMNSTJVFhyK1l2QjJenZ6O6Gm0habtiyBwTZUrIuB3sW07otnGt4W9z1PSwN3O54I1qiVXAxW6j8oae0SnI8puXYlJO&#43;IPnSZIHTK6KXYbtaNMVv367oyLGWym3tGtCjEsLFcbcTFMwAao&#43;YFl&#43;Z2GQS0KmOpjSo6spt/r5ntlbRyTOP8lX3x60KGtRMzxofhhLRB96v8Mn7UidRMUef/xAAdEQACAQUBAQAAAAAAAAAAAAAAARECAxITIBAw/9oACAEDAQE/AcSO4MB0jXEGI6TEwNZrNYqDEdI7ZqHaNfsEfKCDYKonieYIIIMBLpIwNYqR&#43;QQQQNcIpJJUDY2LylDJG&#43;EIkVXjJJLY38UIYxFofxQh&#43;Itn/8QAIBEAAgICAgMBAQAAAAAAAAAAAAECEQMSEBMgITEwQf/aAAgBAgEBPwFSFIUhSNjY2Njc7Dc2NjY2LLNhSNzsOw7BzNhSNjc7Db8a8JcJjxDgUUUUVzXGw2WWdqHKx&#43;DHI3Owcj2XxYiy&#43;UTGKIoCxDjRL6S9DyUIrwTJO0f0SPgpknYokomVURd8NjyDyjyG4mRYzc2ESZl9mN8SJ&#43;MGMf0jxJkj/8QAHRAAAgIDAQEBAAAAAAAAAAAAABEBMRAgITBAQf/aAAgBAQAGPwL4mJll72XmyYiSZeU97xZw/SihrF6tadKKy40Z31Yhwd1e7x3SveivX//EAB0QAQEBAQEBAQEBAQAAAAAAAAEAESExQRBRILH/2gAIAQEAAT8h/wALwEh9uvsN/Di5GriMipNCQKQifwimMOOxHt/bavYfuauzsMOIJ9kpso/LNuRN&#43;xl253EGjYLRIPbTNtrtkIL1s&#43;IAjZMpNHqR9WtKwixbYRGjbSwjeEw0l&#43;dlPs31eSsniR3EtmEoAJ3gE9gmxYskmNE2QLS5K9Wwa20Xmc0t32wh6P43BJgiuzEjfMFoklmW4IGxqGCGVxceW3u2QLeL&#43;Ss37YOriW9HaPIU9ggM20AZV/VNHJAbxv8AJisp5&#43;AXpgYjCwrkOmQv4wigvO/5XtAt4cgOb//aAAwDAQACAAMAAAAQy1cART1pjEDrgCMFUcAmWF0HzD1hJzDqheHgGRMWZrNUerq5cliCgod52sCThQma5wr3/8QAGhEBAQEBAQEBAAAAAAAAAAAAAQARECEgMf/aAAgBAwEBPxBRMSe42MNtSkh8JZ5X1GomIEZYhY2Z4SuZOp9wR3Ze5MaCBsS229bwNtx0alCF4EkFvat5thAINmGogcjIPIZZTyDDQpVnLbMMvFpbFnCznxl28MZ5e8N5kHCOh5HoY/BwiePxCSHP/8QAGhEBAQEBAQEBAAAAAAAAAAAAAQARECExIP/aAAgBAgEBPxD8Kh0MQWIDY/AIUX4bUqVhTw5zGr10YbbeHswIj5KHOKyksjoYeR7w&#43;WLaYKUgUTjDIyMYMXWBTi2ImEQmZIbDCasky8gMhixyCJlkwjHAbPG&#43;pJRaN58xTLCI6G2PYGc4Y0dgjbDfF9y91kvngrZJa3//xAAgEAEBAQEAAgMAAwEAAAAAAAABABEhMVFBYZEQcbHB/9oACAEBAAE/EOfib1J6lPi8gl54QuARnS16/jemxeFy1tXNLU5C/ED8TjxL6GESzj7lB/3uVFfdis6SnRG3BeBmVswrHPcrJm&#43;7WB37vECI1SFgz7gM7icbzsH3G4q3S4wPUZ7vnJkjrYvW7VQwvM93Svn3dE/2X6/ttHTPc6hvqQkGK92/qR/5S4DPqJuMY1Bc93Cp2HIQRCMRZQBn1eiVwg/srpshjBk9flJkAfU56y7hRDTmvxAG4kBMbbsg50sgLdGSLZzvqOa/2AEEKMiwWfFhHjZYithCSwc0nRoCvLCffE5r&#43;T6HLVBsl8xU7lvDNMxI8QGDZ3M8qZdJUn5iqa5ARBIw3SNms2Is6svF&#43;SwsZah0Xy4Tpr21qbLe7E&#43;L7tRyEM&#43;ZkIkdZQjIZzbVW5OeEWikjyrEht0nryOqEkD7m0TX7gOkyFsZf//Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/6x9/6x9_whitehouse_sxsl_120x_blurred.jpg"
+            data-srcset="/images/projects/6x9/6x9_whitehouse_sxsl_320x.jpg 320w,
+                    /images/projects/6x9/6x9_whitehouse_sxsl_460x.jpg 460w,
+                    /images/projects/6x9/6x9_whitehouse_sxsl_640x.jpg 640w,
+                    /images/projects/6x9/6x9_whitehouse_sxsl_1080x.jpg 1080w,
+                    /images/projects/6x9/6x9_whitehouse_sxsl_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        6x9 was also featured in SXSL at the White House where policy makers had the chance to experience it for themselves.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

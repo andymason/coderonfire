@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Scottish independence dashboard - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">Scottish independence dashboard</h1>
+        <p>To track the Scottish referendum we built a <a href="http://www.theguardian.com/politics/ng-interactive/2014/sep/18/-sp-scottish-independence-referendum-results-in-full">real-time data-visualisation dashboard</a> showing results as it happened.</p>
+
+<p>I built a node.js workflow that took data from a Google spreadsheet, parsed it into JSON and uploaded it to S3. The JSON data was polled in-browser and used to render the map and charts with D3. Journalists were able to update the data in the field which appeared on user&rsquo;s screen within seconds.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/interactive-media">interactive-media</a> </li>
+
+    <li><a href="/tags/the-guardian">the Guardian</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="http://www.theguardian.com/politics/ng-interactive/2014/sep/18/-sp-scottish-independence-referendum-results-in-full" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABECAMAAAB9AgE2AAAAV1BMVEXy9PHV29wvSHOtPFHq7u3i5&#43;ajIjr9//z5&#43;/j29/Tu29z06ei6W23myMuOrL9jk688eZ7Iy8resbjIfYq7zdYfZpG7vLqou8nTmaJXbI18jaWgnp9qNFYGaSQGAAAFB0lEQVRo3rWZ6baqOgyAi8CWgrAP4BWn93/Om6mlAyB1a364lgvoR4YmaVD/fUP&#43;WbndDiDR5d9O/fuK/Fq5kUSXO/X7Fems3FEWLqtuU6Zp6nbJFMqZRP4s3K3OS&#43;I86jwer&#43;tIti79AqFXZSxwL69k//aBhEuXZbEuywS1cWtRKKWVKsosBpXOinSfrpZFa1hCRYBMLQpdhdXoScWvGOjn3Q83HlcF4eHyS2BtBKnwmFaxsQKw/hDYmokeWwFbEY2rj4C9x1QcH77HXqj8SbD3AupbYL1KdrlfAhdrG9UGxfFL4DWsCcXj8Ws&#43;nmPY23kG&#43;nlT2&#43;0kdtVBkpLF17V&#43;G2xCaykx2rU3yO&#43;DMWMSeDWKEsEqSeNiIyOng8u1lOn5WOLqJbj6I1gHdY2q1dZ&#43;5eqnV&#43;hL4KLcqE6zeJunWlTJrWmvwSrYlwYQvMWL0usvHKftJbAqlFptBbw/ZVmTNE2ExtymnAy6C7xDqFHJslYkZrtgIfvhuRMcGBexfX&#43;5XK4kw8Bs7a8839&#43;QOIpXKWAbVZhjoLvtHo/HKAJwYKPWXlBbbC0&#43;YfTc7&#43;0A242kBAtngdvJCrBBb1jZzZhaVK3bdhgG82qyz/a52OwILEtlRlg4/DyfuRFkM1rPZCWatoO4pEV/IBPtvhtMi6kC1O2QCue95/P5I0Ls8eqSK42qtsQdR7IJ6tyIy5PAlQIzk7Z4znTBxIbFHXKlao554J7YIhyD6PI0MHJJ3YOIB/5hpQ2ZFR7QvcDFt7JgjrP9Po64AZiVNmQDHlDh3ICJXKdpDLUw4Aa2dshgHwwttLPhUvCRzsRNAAP37HNjsCEr2ku1cE8U97jbKbJrySY7wXBOO08&#43;dwFM5KFttAvO8x/ecOPIgR&#43;lwq3MhQ4OuGFYG/J1ADcjmHYwgM1&#43;QzjFvU4As6EPh4AcgX/E2Jglat5Kuez0fHbE/lzNhj5EYFousDaohcmxIZUN2F5CP&#43;yvTmpJYchfZL4AbVQmLw/XEAwxn1KPycMB9n5/PMCHI4WPR2Yv6xDMr6RTwLHCwO2mS4915&#43;qZczaoFifnQcQfk8BT54U0cfsMm5/WW11UxhDSSsB&#43;2FUJ4CK0NHCnc1ZSDxboZW0dgh2FE8CBpUHfc1Yo6Q0aDN48jGtd4QXOXEZhDq0EcODi262bssJWXtDMU5lsGoJzAes/gcHQpZobrKaG6M3zAKwZLMlaCpQUzSTwzQ0sUNg5SzUtFyHTCZEzyce2SthynQieqM1iubPCWPwq0&#43;VInyG931XA9ZLKaVENrRbPme/3rsOIVs45juP3Otp2l0sBBTyR0Q35W/sYyGdnPpzxLECOZNrUQCvUhqAhalsZ30sgqvCGpjK5pIe5ws1du7QY3EBzaTQan05mP6WdnZyRkjvsmZdojJjukMiDiTuuxklRvXQwd0pXMGedj2dEbjmuT9L9Vsc/gCvHyOZ3ZTAgaZNPObbrfufQtiYrYNpp13H0TzhJPvbH0a&#43;M4mQ1DnfvOJkAfjGfDt5nNgBHdniATtlO2Qvx38oewu1pVblT/pQEEn3v2RJIMCaK7NzJzoKq/V0mgmn2sFeALJ2G9y2DJnPmcP458GOWS08qh/NcmmMw&#43;XOm9sigsg92vt4kgYNcvfi1sJ/JYGusXksap4JlorYlrjPEx9HonHycdIR5KWbH9bK3lK7i2XFlsuvekeLq50kvf1uj8Dx5a5a8PET9H5rK2iVm0mC4AAAAAElFTkSuQmCC )" >
+        <img
+            class="lazyload"
+            src="/images/projects/scottish_independence/scottish_independence_desktop_120x_blurred.png"
+            data-srcset="/images/projects/scottish_independence/scottish_independence_desktop_320x.png 320w,
+                    /images/projects/scottish_independence/scottish_independence_desktop_460x.png 460w,
+                    /images/projects/scottish_independence/scottish_independence_desktop_640x.png 640w,
+                    /images/projects/scottish_independence/scottish_independence_desktop_1080x.png 1080w,
+                    /images/projects/scottish_independence/scottish_independence_desktop_1920x.png 1920w"
+            alt="">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        The in-browser editor was used to create the website animations and tune shader settings.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABHCAMAAAD7lnOYAAAAY1BMVEX8/vvHfovV19fRlZ/k5uXr7ezc39709fP4&#43;vfx8e/czM2tu8fdvcGMlKvXrLPr19jCy9Px5eWlJDysNkybqrych5q0TWCzfo&#43;&#43;ZnY5T3mCq8BZdZdqjqnH3ueTNkxsQlaIaHaZSHUIAAAHiklEQVRo3q2aCXejOAyACcUYk4SjOZoOmTT//1euTh9gSPpm9d7sdMvxIVmSJXmKYdi/lIGknEmdkXevlmUB3POfWM4LEfgcWy3Fv73OXU6&#43;AMDn4z2WP1lRsH&#43;2qsxSwttzl6MvADDoe79PXtbQCE6UMMbZuThFw2U3v&#43;wcsc3IZNAYwPeYuwIGbvz58N5mLtaqWnB5cQ2/Cx/EewiMKmdMLQtMVFjiv3XFOvJ/UOgvBBQs8HbnP8v/tlCuPgQ3ERi965y41tyf/5JUxsoL8NmRpO/HMTAC2M3AxJQLCi6HZUANKn&#43;9VMIVTQHZHlBaQLPS&#43;FFe4RQsKwBLz987EhhkyEkcMmo9IoKSY9923QdKdxCl6aNGz43BFjUEaUF6kprAaWBnQpVehUpYVBR1BO7H7na77XZK9ubnmyNu0Tjgklm7jq3UthBO2RTjg1EjR7xi7Mm6fX/4uN2u1&#43;sNwfD/I1zHFe&#43;rcaEwgktwYRC2UYfot8BMZm5HoMPH7no9nQIYyMglsJuDTY3c4/Hy9QUmwuU5MLh6IWpqDwZD34ALYObSsr8AA5fAiO7eBxOZLQ12QoWJu2NuL7EFPxgPbjbB7RvgwB0lhrpdUPhAvirgcfT&#43;8O9gzzXk08hlQ/MSoxyY7H36/wAbz&#43;VVbJGLCn9&#43;IpicRaKZuUa5/wb2b0KFGazcT1D5eiMBxfuRU7dkxSbjXMdfgH16ZfCYgD/R2iTgZC0mTr8PxNy3wMl2rXbmvYHAQI7AhBbvJjBmTfNbsFkRfo2qLMlSwUIHcD/iPhFp/K6pzWuwONhhAYawOvQugFecaxXsdNNUN44&#43;34b9kKM4AZOlCwabBXkT7Pdo/eIgjYLxR7vUOCgcwEkgr4Ij7gwnUggYfnQKPoUV9gpH4NjBAviS1VhDX7FF5JcNlVp5cFDYr3Gq8ia4itQWNVOwS8He1hpLxUxjlwd/ReCy5qqKq&#43;FVrnj3qIF8UkMHhWdgJa&#43;CS6nnyjqUw0sur7H1gXzyCqfgNBy2cnUErqukWIoWmAvHIoBxe2KFEQxpKwO2b4Jr1rhYgt0CjOTH4yFbY7t0rkjl9d2p5sJZGo8lWFOwOBfUtURm8JX3JtvMEoi1L8E&#43;X6alUmrryKuhot4h&#43;RHIUQJZcCNw6lzaEy3DN1JZ8geCcWNEnQn8OJ1mmSuk2Sbn1V8ejCtrM53fvNejVaCS/kA6C/iRS5nyunnKFGNnNM58QMjVlnMnFwNYdjH4weBkjVf24yU42o7smojfAZmtDeAfkMcjSl2xqd8BR5uxi3fi5GPU4ZncfT2fPyTP21c3z9UrNZck6yyYRgk99wSjMRkwvp3Awn0id5ylzJVCYOHVvgbA4UQrja&#43;0RFYrkJD0XdV2F9L4&#43;bxcOp&#43;4XhYCCbj2IwYj3WTnm7qeitZmDrZV2V2AjNjzvq2N9VeSfLm9LerOAN0zNZN4mTpf7BIOvTbdEVjedEHqfiirkGYTsJ3H8Sxz1TJjMHWJV&#43;8TKMLFsvSgo7T7ERg67XbY8wTKJL3/1raYBVu&#43;OE3TN4YIl8vc/vZaqocYt45mZLUMRhLw0tbrYLgLrp1B228QBPtNHhtRINuQrWXaYXTG1vjMs1zjl2BH3Im4RPZ1jWy3LrKhC2WwlNo0kBl5OJMprNfBJuHGYL/RO5et9jHoOfzaXto28z4Ynh72gZuCue3HTj87rC15r/Jzp2WNuQ6uiXv33HiRQ0s2mnkbSR887OFtNxk8tTqJSFNXBN4lYEgb54irbs1gLZyX3avBwIew1&#43;jjCDBmNYHMwCVwwdCB&#43;w2BjDOsE3O5N0rJ5M7okWApSJ0PCT7UuVqqvAbGfBUpPE10w00LSVG59VM&#43;5mLol/Tgz48PeyBXxryrMdprCtj78bzvui5uF6g76uNmVsHkkmxrdcPKbHh1Ak4Unu5nSL8ycQhgUdn46S&#43;CK4rBaXrCC2nAeMXIq96ec8WhhNwSHx1leufBXVvL0iLZNQTGYEATdVxq3xJw8QvwNB2B67icbH0DzhEl25j13UxFuwqszNCSgXiUW5m10icDFlPD15&#43;HWqoYp5PS4Da6Q0ptgO/DqTpsFjK/xs1sHXxcgHF74KMQMLSxcvvYS69Cg6xDi1WwHi/wjmBo0I3bG81GqGypt8Bp6TPwTPfIVqtoiIJ/0NgfH&#43;qHrS9GtFT3JxA8ZwKlcQD&#43;C3AZTiWGoTb&#43;5ZbKWBpVHtiEKVhaDOmPcItG/fnEqXkH7A/dBjabLqLl0TcL5Gq3ACd9jiPD&#43;&#43;a&#43;eANccTlNJ2RGRz/Ix0OxcbblrIL5xENi7h1wKPYMN6rcDcuJnditSQqQXGuHtq74SHFm6Q2wDa6iQB2cOi4hqdiz61gmSx6fN9nb4CI0wTxM0zqrafzYZ40ZTywyXfaGqfWgLASqtdHfRWrqFa5MWpdLbHPgspCJS9SS&#43;i9IJorR6H2jifZz5vjXevxz1J5NTmEqs96chrPfMP7L3xCPYOenyrUcePkTLz7w2pgZJ4fdLwbbYca&#43;&#43;LWc8OEZXycHbXy2WL0USTJ1vXXz7HwuOZnng9KWTxbbsuTT1Pq1bP9zh/ierYfbVrBl&#43;R&#43;UlDRQ2BqpYQAAAABJRU5ErkJggg== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/scottish_independence/scottish_independence_mobile_120x_blurred.png"
+            data-srcset="/images/projects/scottish_independence/scottish_independence_mobile_320x.png 320w,
+                    /images/projects/scottish_independence/scottish_independence_mobile_460x.png 460w,
+                    /images/projects/scottish_independence/scottish_independence_mobile_640x.png 640w,
+                    /images/projects/scottish_independence/scottish_independence_mobile_1080x.png 1080w,
+                    /images/projects/scottish_independence/scottish_independence_mobile_1920x.png 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Careful attention was given to the mobile design ensuring information was clearly laid out.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

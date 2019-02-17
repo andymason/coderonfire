@@ -1,0 +1,129 @@
+<html>
+  <head>
+    
+    <title>ROOM 47</title>
+    <style type="text/css">
+      body {
+        background-color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      audio {
+        position: absolute;
+        top: -1000px;
+        left: -1000px;
+      }
+
+      a:link,
+      a:visited,
+      a:hover,
+      a:active {
+        border: none;
+      }
+
+      #bedroom {
+        width: 90%;
+        margin: 20px auto 0 auto;
+        position: relative;
+        overflow: hidden;
+
+        display: grid;
+        grid-gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(0, auto);
+        max-width: 1200px;
+      }
+      @media (min-width: 600px) {
+        #bedroom {
+          margin-top: 30px;
+        }
+      }
+
+      @media (min-width: 600px) {
+        #bedroom {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (min-width: 900px) {
+        #bedroom {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+
+
+
+      #time {
+        color: #222;
+        font-family: monospace;
+        font-size: 11px;
+        text-align: right;
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        clear: both;
+        max-width: 1200px;
+      }
+
+      .monitor {
+        position: relative;
+        width: 100%;
+        background: transparent url(static.jpg) 50% 50% no-repeat;
+        background-size: cover;
+        overflow: hidden;
+      }
+
+      .monitor img {
+        width: 100%;
+        height: auto; 
+        min-height: 100%;
+        transform: scaleY(0);
+        opacity: 0;
+      }
+
+      .static {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent url(tv.png) 50% 50% no-repeat;
+        z-index: 100;
+        background-size: 100% 100%;
+      }
+
+      #contact {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 5px;
+      }
+
+      .title {
+        font-family: monospace;
+        color: #FFF;
+        max-width: 1200px;
+        margin: 2rem auto 0rem auto;
+        width: 90%;
+        font-size: 1.2rem;
+        padding-left: 1rem;
+      }
+    </style> 
+  </head>
+  <body>
+    <h1 class="title">LIVE CAMERAS</h1>
+    <div id="bedroom"></div>
+    <div id="time"></div>
+
+    
+    <audio preload="auto" autobuffer loop autoplay> 
+      <source src="static.mp3" />
+      <source src="static.ac3" />
+      <source src="static.ogg" />
+    </audio>
+    <script src="list.js"></script>
+    <script src="eob.js"></script>
+  </body>
+</html>

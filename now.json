@@ -1,5 +1,15 @@
 {
 	"name": "coderonfire",
 	"version": 2,
-	"regions" : ["bru1", "iad1"]
+	"regions" : ["bru1", "iad1"],
+	"builds": [
+		{ "src": "src/**/*", "use": "@now/static"}
+	],
+	"routes": [{
+          "src": "/(.*)",
+          "dest": "/src/$1",
+          "headers": {
+            "x-request-path": "$1"
+          }
+	}]
 }

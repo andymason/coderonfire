@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Works on Andrew Mason, Creative Technologist</title>
+    <link>https://coderonfire.com/work/</link>
+    <description>Recent content in Works on Andrew Mason, Creative Technologist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="https://coderonfire.com/work/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>6x9: Virtual Reality Solitary Confinement</title>
+      <link>https://coderonfire.com/work/6x9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/6x9/</guid>
+      <description>6x9 is the Guardian’s first virtual reality experience, placing you inside a US solitary confinement prison cell.
+As the creative technologist, I was responsible for overseeing the interaction design, technical development and delivery of the VR experience on multiple platforms including GearVR, Google cardboard and 360 video.
+I also designed and developed the WebGL promotional site that used optimised 3D assets and shaders for desktop and mobile.
+A custom in-browser editor was created for fine-tuning animation timings and help debugging.</description>
+    </item>
+    
+    <item>
+      <title>BBC Homepage</title>
+      <link>https://coderonfire.com/work/bbc-homepage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/bbc-homepage/</guid>
+      <description>As part of the BBC homepage team I was responsible for interaction development.
+Prototyping and user testing was used to create an interface that delivered the project&amp;rsquo;s requirements to showcase a broad set of content but also the met strict browser support and W3C/WAI guidelines required by the BBC.
+Design  UX  the Guardian      Animation and UX hints were used to encourage content exploration.   </description>
+    </item>
+    
+    <item>
+      <title>Beat the Hustler: A VR street con</title>
+      <link>https://coderonfire.com/work/beat-the-hustler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/beat-the-hustler/</guid>
+      <description>Beat the hustler is an interactive 360 VR experience that places you in the shoes of a tourist playing the shell game. The aim of the game is to find the ball under the cup. However, unbeknownst to the player a team of pick-pockets are working the crowd.
+The idea was storyboarded and test-shot at the Guardian before filming took place near Tower Bridge. A GoPro Odyssey was used to film all scenes and later edited before bringing the footage into Unity.</description>
+    </item>
+    
+    <item>
+      <title>Firestorm</title>
+      <link>https://coderonfire.com/work/firestorm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/firestorm/</guid>
+      <description>With beautiful video and audio recordings from the event, Firestorm presents to dramatic events of the Australian bushfires.
+A rich multimedia presentation was built that blends long-form writing and video documentary. It was achieved by using full-screen video, background atmosphere audio and careful attention to scene transitions.
+the Guardian      Transitions between background images, video and audio were made seamless ensuring the flow of the story.      The long-form text overlaid beautifully shot looping video that added texture and context to the words.</description>
+    </item>
+    
+    <item>
+      <title>Glitchor</title>
+      <link>https://coderonfire.com/work/glitchor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/glitchor/</guid>
+      <description>Glitching or Databending is about manipulating data to introduce artifices that result in distortions from the original source. To explore data-bending more I created Glitchor, a tool that let me create my own glitched images.
+By directly manipulating the RGB data-structure of a source image I am able to generate unique artistic results.
+Personal  JavaScript  Image manipulation  Glitch      I have a personal soft-spot for the aesthetic of old CRT TV signals.</description>
+    </item>
+    
+    <item>
+      <title>Room 47</title>
+      <link>https://coderonfire.com/work/room-47/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/room-47/</guid>
+      <description>There are thousands of IP webcams exposed on the internet without the knowledge of their owners. To explore the ideas of privacy and being in a position of control I created Room 47, an experiment that cycles through different live public webcams putting you in the role of a voyeur.
+Personal  Experiment      Each camera is a live feed from an IP camera.   </description>
+    </item>
+    
+    <item>
+      <title>Scottish independence dashboard</title>
+      <link>https://coderonfire.com/work/scottish-independence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/scottish-independence/</guid>
+      <description>To track the Scottish referendum we built a real-time data-visualisation dashboard showing results as it happened.
+I built a node.js workflow that took data from a Google spreadsheet, parsed it into JSON and uploaded it to S3. The JSON data was polled in-browser and used to render the map and charts with D3. Journalists were able to update the data in the field which appeared on user&amp;rsquo;s screen within seconds.</description>
+    </item>
+    
+    <item>
+      <title>The Journey</title>
+      <link>https://coderonfire.com/work/the-jounrey/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/the-jounrey/</guid>
+      <description>&amp;ldquo;Syrian refugee Hashem Alsouki risks his life crossing the Mediterranean, his sights set on Sweden&amp;rdquo;
+Blending long-form journalism with seamless video playback and responsive image presentation this interactive tells the story one man&amp;rsquo;s journey for a better life. It was also the Guardian’s first Facebook Instant article.
+interactive-media  the Guardian      Video taken from the crossing is integrated into the page and loaded dynamically as the page is scrolled.</description>
+    </item>
+    
+    <item>
+      <title>Tour de France WebGL</title>
+      <link>https://coderonfire.com/work/tour-de-france/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/tour-de-france/</guid>
+      <description>I was commissioned to create a data-visualisation that showcased the history of the Tour de France&amp;rsquo;s most famous hill climbs, Alpe D&amp;rsquo;Huez. To bring the data to life I combined satellite photograph with accurate elevation data to create a 3D WebGL reconstruction of the mountain course.
+Careful attention was given to the mobile UX with the inclusion of both tap and swipe navigation. An image based non-WebGL alternative was included as a fall-back for older browsers.</description>
+    </item>
+    
+    <item>
+      <title>Underworld VR: Subterranean London</title>
+      <link>https://coderonfire.com/work/underworld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/underworld/</guid>
+      <description>Underworld was the second virtual reality project I led as the creative technologist and was responsible ensuring the successful launch on Google&amp;rsquo;s new Daydream VR hardware.
+Utilising the potential of Daydream controller, Underworld allows the user to explore the London sewer system with an interactive torch lighting their way.
+To coincide with the launch of VR experience we built an interactive site. Using audio interviews, animation and historical imagery it transports you into the hidden world beneath London.</description>
+    </item>
+    
+    <item>
+      <title>Walled World</title>
+      <link>https://coderonfire.com/work/walled-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/walled-world/</guid>
+      <description>The Walled World interactive highlights walls built around the world that divide people from their neighbours.
+Uses satellite imagery, SVG animations and video the interactive charts the path of the walls and the impact they have on people&amp;rsquo;s lives.
+interactive-media  the Guardian      SVG animations are used to plot out the route of the walls.     As user&amp;rsquo;s scroll down the page the wall&amp;rsquo;s path is exposed.</description>
+    </item>
+    
+    <item>
+      <title>WebGL GameBoy</title>
+      <link>https://coderonfire.com/work/webgl_gameboy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/work/webgl_gameboy/</guid>
+      <description>Blender is an amazing 3D application but is known for its steep learning curve. To better understand Blender and the workflow from modeling, texturing through to WebGL I set out to recreate one of my favourite consoles, the GameBoy pocket.
+JavaScript  WebGL  Blender      The final result is an interactive 3D textured model with animated motion and shadow. Try spinning and zooming in.     Several reference images were used to accurately model the GameBoy.</description>
+    </item>
+    
+  </channel>
+</rss>

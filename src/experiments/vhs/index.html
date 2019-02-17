@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
+  <title>Editor</title>
+
+  <link type="text/css" rel="stylesheet" href="css/editor.css" />
+
+</head>
+<body>
+
+  <noscript>
+    <p class="noscript">Please enable JavaScript to use this application.</p>
+  </noscript>
+
+  <div id="editor">
+    <h1 id="title ">Glitchor <span>v2</span></h1>
+    <div class="output_wrapper">
+      <div id="canvas_wrapper">
+        <canvas width="800" height="600" id="output"></canvas>
+
+        <div id="progress_bar_wrapper">
+          <div id="progress_bar"></div>
+        </div>
+      </div>
+
+
+      <div class="output_contols">
+          <select id="destination">
+            <option value="local">New window</option>
+            <option value="imgur">imgur upload</option>
+          </select>
+
+          <select id="resolution">
+            <option value="320x200">320x200 (C64)</option>
+            <option value="320x256">320x256 (Amiga PAL)</option>
+            <option value="320x512">320x512 (Amiga laced PAL)</option>
+            <option value="480x320" selected>480x320</option>
+            <option value="640x256">640x256 (Amiga High-res PAL)</option>
+            <option value="640x512">640x512 (Amiga High-res laced PAL)</option>
+            <option value="640x480">640x480</option>
+            <option value="800x600">800x600</option>
+          </select>
+          <button id="render">Render</button>
+      </div>
+      <p>NOTE: Rendered images appears in pop-up windows. You will need to allow pop-ups in your browser to see the rendered image.</p>
+    </div>
+
+    <div class="col1">
+
+      <div id="source_wrapper">
+        <p>Source content. Click image or "Browse..." to load a new image</p>
+
+        
+        <label for="local_image">
+            <img id="sourceImage" class="source_image" alt="Source image" src="img/warhol.jpg" height="60" />
+          </label>
+        <input type="file" id="local_image" name="local_image" />
+        
+      </div>
+
+
+      <div class="filter_selection">
+        <p>
+          <label>Filters</label>
+          <select id="filter_selection_dropdown"></select>
+          <button id="filter_selection_add">Add</button>
+        </p>
+
+        <p>
+         <label for="iteration_count">Iterations</label>
+         <select id="iteration_count" name="iteration_count">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </p>
+
+        <p>
+          <label>Configs</label>
+            <select id="filter_examples"></select>
+            <button id="filter_example_load">Load</button>
+            <button id="export_settings">Import / Export</button>
+            <button id="filter_clear">Clear all</button>
+        </p>
+      </div>
+
+
+      <div id="active_filters">
+          <p>Active filters</p>
+      </div>
+
+      <dic id="help">
+        <h2>Help</h2>
+        <p>Glitchor is a data-bending tool that allows you to manipulate images.</p>
+        <p>Filters can be added to choosing one from the drop-down and clicking Add</p>
+        <p>Click on a loaded filter to modify its properties.</p>
+        <p>To remove a filter click the "X" on the right side of the filter.</p>
+        <p>The order in which filters are applied can be changed by dragging and dropping.</p>
+        <p>Filter configurations can be saved and loaded as JSON by using the Import/Export button.</p>
+        <p>Images can be rendered out as PNGs or saved to IMGUR using the Render button.</p>
+      </dic>
+
+    </div>
+  </div>
+
+
+  <div id="settings_output_container">
+    <div id="settings_output_inner">
+      <h2>Settings output</h2>
+      <span class="close">x</span>
+      <textarea id="settings_output"></textarea>
+      <button class="import">Import</button>
+    </div>
+  </div>
+
+
+
+
+  <script src="js/libs/jquery-2.0.3.min.js"></script>
+  <script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="js/libs/underscore.js"></script>
+  <script src="js/libs/backbone.js"></script>
+  <script src="js/libs/deep-model.backbone.js"></script>
+
+  <script src="js/libs/glitch-canvas.js"></script>
+
+
+  <script src="js/analogue.js"></script>
+  <script src="js/models/filter.js"></script>
+  <script src="js/models/input.js"></script>
+  <script src="js/models/exampleCombinations.js"></script>
+  <script src="js/models/filterData.js"></script>
+
+  <script src="js/collections/filter.js"></script>
+  <script src="js/views/filterItem.js"></script>
+  <script src="js/views/filters.js"></script>
+  <script src="js/views/export_settings.js"></script>
+  <script src="js/views/sourceInput.js"></script>
+  <script src="js/views/app.js"></script>
+  <script src="js/app.js"></script>
+
+
+
+  
+  </body>
+</html>
+

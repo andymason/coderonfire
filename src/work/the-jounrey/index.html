@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>The Journey - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">The Journey</h1>
+        <p>&ldquo;Syrian refugee Hashem Alsouki risks his life crossing the Mediterranean, his sights set on Sweden&rdquo;</p>
+
+<p>Blending long-form journalism with seamless video playback and responsive image presentation this <a href="https://www.theguardian.com/world/ng-interactive/2015/jun/09/a-migrants-journey-from-syria-to-sweden-interactive">interactive tells the story</a>
+one man&rsquo;s journey for a better life. It was also the Guardian’s first Facebook Instant article.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/interactive-media">interactive-media</a> </li>
+
+    <li><a href="/tags/the-guardian">the Guardian</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="https://www.theguardian.com/world/ng-interactive/2015/jun/09/a-migrants-journey-from-syria-to-sweden-interactive" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABAECAwUGAAgH/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwQF/9oADAMBAAIQAxAAAAEz0PKkTeDkOBRoDRvQrSJzppN4JaD3l9t5OiYcqcybh8GeHix2wbNTOqjBofM7MeHoFTIEqahwCB8gbwpZKe6ibybGpCJZmnWXHoxTIDwemMjFuvlDqlnQmNLWCZstWxKr0yi1w9MTDk&#43;ExmRT&#43;Y08&#43;WCtSIu2y0KnoinqsHkJvwU&#43;3J6Uzzr1VEMu4zVPNMhTSeiSdXzUEUArK6fPHrOmH6DxnOxpjSwujnioFYxN0bPjoiz7YZc6DOjzqmudKn0dKqlQQC3AzGjjBypVcy0mTcNSR7wnc64IxICDDBgcCgoHAQHBwNBQ/8QAJRAAAgIBBAEEAwEAAAAAAAAAAQIAAwUEERIVExAhIzMgIjEU/9oACAEBAAEFAusgxk6udTOonUTqROrWDEgzqJ1ETEiXYocchpzS2hPyBYFgScZsIdpkNYtQsy/7aLKKx096WB3QTyqI9ycc&#43;VMx5&#43;fjAIBNptNQeKZzUnmzkmi5lOOyBWW67lG1h4/7GmSvLzHH5xB63WBBkMiNsjb5HETaV&#43;0N7CV2Eg776sHbG/eB6biO2wydx46sszXI04NuqNNOJZWIDxmn2Y5IbLjvvW0GazU&#43;MJkv2fXpx1WpV5eyQBGHiqgqrnGsR2WXj2x/9y7e2M&#43;/ZlmRYkW8wTZbCXMfnFLicnnJ4zWT5IvMyssk1xeyYupvMy7y7TBocehj4xJ1qQ41J1aTrEnWJFxSGdRXBiUhxSRsPWZRiURo0Ef&#43;H8BK/wARP//EACARAAICAQUBAQEAAAAAAAAAAAABAhEDEBITFCAhBED/2gAIAQMBAT8B4DgOA651jrHWOsdY6x1jrkcFEsVkfz0UUV5orSivFeKK0SNptFEcRIa9pFCRRts4zhs4SUKH6QhIoi6INMSiTlFGSaY9a8JkWL6bWRi0Sk0ZcrE9YoY/ETGKj4bUzPh&#43;lVrY5eUxZKOdnOxfoZPNuG/4f//EACARAAICAgIDAQEAAAAAAAAAAAABAhEQFBIgAxMwMUD/2gAIAQIBAT8B957z3mwbBsGwbBsGwbBsD81kfJQ/MWWX3ssssT&#43;VjZYmMi/ixl45HIi8WX3Y1lRZFdE8UUUPMiJGObGyIujGMo/CMs8TgKPajicTgKP8X//EAB0QAAICAwEBAQAAAAAAAAAAAAAxASARITAQQEH/2gAIAQEABj8CEIQhUQhC5M3NZxeSYz7uRjHwmMk&#43;6rFZJpvgx8NexT94IQiNeoQhCEIQhCEZx8H/xAAgEAEBAAICAgMBAQAAAAAAAAABABEhMVEQQSBhcTCR/9oACAEBAAE/IQ9QzFgGYTGJerF1cEWMwHwATxFerOS&#43;mHqLqB1HRYDiRbLBrDAEFRLoLtEtbLNMLQ/YHxQNWZgJyyDosUEYAl4KO4ucy2p&#43;2UIPD9WKGZ1mRm2TRmaDLbWyelsGX&#43;nh0eQMIG303OxdBupJwJRmLnKR09f2K5jXcGjFcc87sjOrf8Rm9X0Y4OLMxmLaB5XAnn9vFfFkkzZ2J20F3aTDbfd&#43;8n0zm8MAwqJ0r2CCyuYBJ7PEummCpsn1o63jv0YfrLOF6TFgf4o5QMfBud//2gAMAwEAAgADAAAAEJA3aFVzLxlqVGgq4FpXsTAWJQbfior7myqamOn0uA0dB5FK9V2MTFQ/RIIhoJ1JIBABB//EABwRAQEBAQEBAAMAAAAAAAAAAAEAERAhMSAwQP/aAAgBAwEBPxAp&#43;rgCgrNlo3oTCwjIDhmEcMss4yyzoFramk2XHGTmWd0ikQOQhtC2TQZZZZ1ZLbaIH1wzEbfM5GDZr5bbe3c2kIa05O/ZYOBAvrpPyQt5cI8gNXhLbGbT8cZoByFJNf4f/8QAHBEBAQEBAQEAAwAAAAAAAAAAAQARECEgMDFA/9oACAECAQE/EGv4d&#43;14Wrbcz4G2ysb9AmkttvNttiXJHXpLOG222y2xDKTNEnF75HTd4fuJnhrUnXkciSXgRyYJJyxZWHNkDjGkrHzrCFqUwKvOPWLEhhIPhJuLMhsYM/h//8QAJBABAQEAAQQCAgIDAAAAAAAAAQARITFBUZGB4RDxYaFxwdH/2gAIAQEAAT8QZ9b9ZfqL6xCfSP0LqhPiVYkC4G2&#43;k/8AIQTkepCHc8RjxB8Qv&#43;Yr4i8RH7IXZa6jiy8EmQ4N83KufzIAaXGrAW8EGPQnuU5gSgO0HiAuU8bgSwkOYL3kKLrCRY&#43;Z9/yzf2BO5PuVovcAFbd9gUs0GHMJQwh&#43;9E62K61jc54whGaHHlJNHTtvi2EAO0g85HaSJUYK7o3k4lro31qFjq46LATm4BZDjBl&#43;AcW8tgCRDPzdhW&#43;bv4zzCeUf5tMK1/BLtkA5OrhByGStMLTgEH8IIHFwgju2Ia/RxGa3mk/BDhsLwdKpxL1tilPi1gPieeT4jgv8JiZOUHY/keoQp6oTmPUJ0errser9VIf9VyyPUfUSXHosx/VdUT4joEfH4BCBq6niXmH&#43;D82RxAeLDxYeIniB2X//2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/the_jounrey/the_journey_website_top_120x_blurred.jpg"
+            data-srcset="/images/projects/the_jounrey/the_journey_website_top_320x.jpg 320w,
+                    /images/projects/the_jounrey/the_journey_website_top_460x.jpg 460w,
+                    /images/projects/the_jounrey/the_journey_website_top_640x.jpg 640w,
+                    /images/projects/the_jounrey/the_journey_website_top_1080x.jpg 1080w,
+                    /images/projects/the_jounrey/the_journey_website_top_1920x.jpg 1920w"
+            alt="Screen capture of website">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        Video taken from the crossing is integrated into the page and loaded dynamically as the page is scrolled.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAwACBAUGAQf/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAH1QWSptQ46OO0QMEEIaIQDKNqGI6uhg6nhwh06IeDM5rNAGJObJzuCTbk1UsV1O3CZX0a9RnntmRh1TkBnpYpbWdszAKKzpmTlvM63ijPNTMZ3e3NV15RC557WoLOgZsreW2HXWy66Bnlk0HN1u84zrypM7PjrG6cQcemlzYnbmzeSVusXZ40w88UWbojJ9eVBa/Omw3Gr8g7yDWSG0zdpLwEchpAsGIS9iWHrh0IGGjjpHK&#43;GCJdHChBCOCP/xAAlEAACAgICAQMFAQAAAAAAAAABAgADBBEFEhMQMTIUFSAhIjP/2gAIAQEAAQUC16bjwwTc3BBNTU1NQD0czvO3636EiA&#43;iuJ5FndZ3E7AwQ&#43;2bk9Ic/wDaZ8TJ2XytCzIOsO4mZN/UNmmPyLgpyZj8mdcXlNbFj&#43;3ME9iTFJiX9A&#43;V2ZLd14DTk20lT9jfWYVaVqxnCpqJH&#43;PNWadW3MejuuenQ49XadOq1X&#43;KZGV5RQOsNgMHUxAs4yL7WfHm/wDXDoVxTSETl/lTkdY2STDbuBv6xtGu0gFHErs/viokf48vivY&#43;Bj2JCj9eQxHsP26zf0Fkfj7NV8fZurFsCW4VpIwbomFaDxVTpE9DUrQUqI6DTVrPEk8STwrBSsrqWeBJ9Ok8CQVhYPwt9jNzcSaEX8RP/8QAHREAAwACAgMAAAAAAAAAAAAAAAERAiAQQCEwUP/aAAgBAwEBPwHoXpIm1LvRZDe01g0MROITdFGMxXE88MfpyFqyfC//xAAeEQADAAMAAgMAAAAAAAAAAAAAARECECASITBAUP/aAAgBAgEBPwEvzz6T6RCdwaJtoRRvmiEPUKeWoQnEEYmRBv0MSMdvrFj09plKN/gf/8QAGxAAAgIDAQAAAAAAAAAAAAAAADEQEQEhQCD/2gAIAQEABj8C6WP0xzcsYzWTfTRfNeMClCEIqhCEbneBShCEIQhGuH//xAAdEAADAQADAQEBAAAAAAAAAAAAARExECFBYVEg/9oACAEBAAE/IR0hIJ0J2NOKLC/wGO7hS9El0avQ1ungl6KeMsE1p8gneBp9FgZseC1qkgoGbC50ZgxL2x&#43;52YNEE9D4JFHdGog0KN4LexjNOEu9MRjnI2oTfpEXYyaYRsIYi3BVIdYi2snUq03HA6yK8EXiGVU4NxPf6LT4u6TmBCyUk7Z4mJUxyhFpSKMnDCFrFaiMm3EsHTEjQ&#43;wxmNdiOMNjoW9FbRElmFzBhIeUMPtI&#43;Q&#43;QbfB&#43;OfjFPJ8Z85lOa5HdGwmFT3iRL&#43;GbP//aAAwDAQACAAMAAAAQjQ20EAEk9s2kAAEgocHpsDADn11LjMhm1KKpwkXCYbwbsA0bRRG/AG5Zi4gEkkSwAkgn/8QAHBEBAQEBAQADAQAAAAAAAAAAAQARECEgMEAx/9oACAEDAQE/ELPwNt&#43;1ieCJk9Z4HciYxBa2ywyyMQOhsXKeW23mw&#43;3qczwbfg8S2/vkoGRAZLjeHRt2wh7NLdiGYcZB8Ntkss5tv5f/xAAcEQEBAQEBAAMBAAAAAAAAAAABABEQISAwMUD/2gAIAQIBAT8Q4H74WfaExwsMT1&#43;eHozF6ljHA4eI4F3uzFG826zknF6Y9iNcdeBl&#43;OT3Bw9IQfK2tkSG0JSRZd9PjkOW29z&#43;X//EACQQAAMAAQMEAQUAAAAAAAAAAAABESExQVFhkaHBgRAgcbHx/9oACAEBAAE/EI4G9UZcEOxIZpLHN6lXlimiOCOCOBQgPQSOhQ9OhuYMZUaZQ3kM9bMwU/qGmdwTZXuafP6FhmgmDsHkRx&#43;QttY/kR438le4a&#43;hyagTVGOo4rzDpV7i5TuNaHR4M8YqZ6jLZCLqbNJTF5J5RKE3mCZis9gpxj1QzQ0FkQxNPpnj&#43;h1XEHky47C3iHJYORwEOmgU56MyLuKIobMUR4Ecg7SQ8EQ32DEajRpoOZbMhoZYCGbwlLkydEoqm3FH3E7QpfpiJkxRcDSwzsh&#43;iToJTGsDMTi18Q3tfqPQAUR9gbJDgrxvQofrE3d8D6RORYpjVUY6qH8GaQ&#43;BBlA7VfBm9Rm9Qi9Qk8dgaUfaHruwfwBKfoNKV8GD&#43;yzTQqZOQOPUW4C4jRF90/9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/the_jounrey/the_journey_website_gallery_120x_blurred.jpg"
+            data-srcset="/images/projects/the_jounrey/the_journey_website_gallery_320x.jpg 320w,
+                    /images/projects/the_jounrey/the_journey_website_gallery_460x.jpg 460w,
+                    /images/projects/the_jounrey/the_journey_website_gallery_640x.jpg 640w,
+                    /images/projects/the_jounrey/the_journey_website_gallery_1080x.jpg 1080w,
+                    /images/projects/the_jounrey/the_journey_website_gallery_1920x.jpg 1920w"
+            alt="Screen capture of website">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Video taken from the crossing is integrated into the page and loaded dynamically as the page is scrolled.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAwQBAgUABgf/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIEAwX/2gAMAwEAAhADEAAAAfmOcuT2E7SL6fXH6bfj42TLyLnpDj6Yri81S8xL89rWMZHJ7idd5rc1x6uvHs0edYrsRz2xNcodcptfOdvlhWaud2uu1dWR&#43;V/BXPv5S9yGvE2OqtLa5ovLs3kw6180vqe2nFnOXDEx752PoJenE35947hPfHeXe1y4ZqZbOtPbp5Ivl0vms6ys9Ab53z7VuNLWAw/fP6KMy6Wh6UhWQdDgEpiStHKhT3NWJhbz0tuREli1h6PXHEHEFjslfH0DvMxBJOoxR9zjiDipYkFCxcsccGq5xxBx/8QAJRAAAgIBAwQDAAMAAAAAAAAAAAECAxEEBSEQEhMgFTNBFCIy/9oACAEBAAEFAoH4RNvng80e3cV3Sqi07UYPEmeNI/Zf5277oH4RNNFmHiFPeXadQLRsUhyM8t8bd90CtZTrIV812KsV0WUTRr7FiyR3coY5Hcbb9sCllkuNCsmrr/tRUxqUDVWMb4zzF8WPojbPtjGRTGRGhyVFEoltbKuC55WpgxxkdkhKZ2ybq02VbQ4m2RfmWyRIbPFFe2pD0MUWaNM/gHx5LbIs&#43;HiLZYHwkT4SJHaEiWzpmn2iMJdZv04MIh0wYMC9Jx646w9V6T6JGDBgXqj/xAAgEQABBAMAAgMAAAAAAAAAAAAAAQIDERASISBAEyIw/9oACAEDAQE/ASMTEvhCg1LQdCg2OicXMYjjYkxRqRMGrRZZMlj0yim5uXeEGIVSCSdGjuCvslTworFmxG/pt9S&#43;kbuEzxq9JF8lxQ3h8nCxstD5LEcOdfqa4oor89iyyy/X/8QAHxEAAgICAgMBAAAAAAAAAAAAAAEREhAgAhMhMEAx/9oACAECAQE/AdFhvSSRbrDZOq1SKn4Scsx6OOGVHxIyxbLMk6r5WdhJYsWJJ9DOvyQVKlSBL5f/xAAcEAACAgMBAQAAAAAAAAAAAAAAMQEgESEwEFD/2gAIAQEABj8CtrhF98IrieUU2a5QLxCovEKkCEIVEIQhCEZx87//xAAfEAEBAQADAQACAwAAAAAAAAABABEQITFRIKFBcZH/2gAIAQEAAT8hHdhc7vUWdn&#43;TabO8nBhMlkRwmYf9r1Jx9WYS&#43;60wHcibZzWnADf2Jd8dnb6OMDYreK2&#43;zqeJXdblv9ku7Am8cB6okgJbi2/NnTarw/etXq2HTbCITFqR&#43;brAmqzy4zv6hHqfMZN0vIIfQ&#43;wuCD4BOkyz8kr5GTVjDj&#43;&#43;g4T24bjD5AThBIWEBBCMWFj5Y&#43;SPkTeCfODLOGQQ/BvfBx4s7gsWIEfwb3f/2gAMAwEAAgADAAAAEFQbm6Yfv6EmBF7gz9n9gfJOFekop99IzIVKVwi9Lna27lpDQhnZIJJ4X3dJBJJsksJIJ//EAB0RAQEBAAMBAQEBAAAAAAAAAAEAERAhMSBBMED/2gAIAQMBAT8QvcZOpdzFt2XUSGA3m98vGCQk9bGNQ1kLJdrxwsXnO3DmOssbEsDe0xdiQIll&#43;/GQcjpLhHEQxzd5gTs2L9siOPNnfBKh9J27IJLhyM52bLLONtt&#43;g21lnwMs/gN4&#43;Q2X/L//xAAcEQEBAQEBAQADAAAAAAAAAAABABEQITAgMUH/2gAIAQIBAT8QfxDwWZ8iuuCJno5lG5Z95nBEyWnKM3LYj2/SYIIibZFpZY1DOYPb&#43;Q9jJw4yhmIqbOJDpzItl2GXbLLLILLLOrLG5ZsWIFiNfA6SjUPLduFbsPjllllnw//EACIQAQEBAAICAgIDAQAAAAAAAAEAESGRMVFBYXGhECCBMP/aAAgBAQABPxAsTAjgZ/TLbM7khrTbmBbJxGgtPhA8BERwH8A5G&#43;FYjciTdAk&#43;ajQGzwgtqBuQuZxjY57ea2SnDhPYuU5BuQRwJGwS3ilvBThbcKsxpAsJkY8Wyfhri2bzcMLSh8&#43;5fR&#43;oXyy1FJ6jLe1nHlG&#43;VigZ1ebW8yM/pHGdE0Hqjuj/AJcAR/k7avFf0hSAMXUIf0pejos1&#43;iBj1RFO/iWVerafElvHqVEPUWEdWuB1FoPU/DOfTlR6nwXq8QdTp4dSWgdXhI/EJwdRFBj6vqXrEA3J&#43;kx8X1W/wXpF6BH1Iz8F9K&#43;leqvhD&#43;Z2MKwd5ktiLyWceP8AhIIiM&#43;L676704g4/tP/Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/the_jounrey/the_journey_website_bag_120x_blurred.jpg"
+            data-srcset="/images/projects/the_jounrey/the_journey_website_bag_320x.jpg 320w,
+                    /images/projects/the_jounrey/the_journey_website_bag_460x.jpg 460w,
+                    /images/projects/the_jounrey/the_journey_website_bag_640x.jpg 640w,
+                    /images/projects/the_jounrey/the_journey_website_bag_1080x.jpg 1080w,
+                    /images/projects/the_jounrey/the_journey_website_bag_1920x.jpg 1920w"
+            alt="Screen capture of website">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Audio recordings are interwoven into the text allowing users to hear the quoted author&rsquo;s voice.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

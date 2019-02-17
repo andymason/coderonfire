@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>WebGL GameBoy - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">WebGL GameBoy</h1>
+        <p>Blender is an amazing 3D application but is known for its steep learning curve. To better understand Blender and the workflow from modeling, texturing through to WebGL I set out to recreate one of my favourite consoles, the GameBoy pocket.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/javascript">JavaScript</a> </li>
+
+    <li><a href="/tags/webgl">WebGL</a> </li>
+
+    <li><a href="/tags/blender">Blender</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    <div class="video-container">
+        <iframe src="/experiments/gameboy/?embed" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+
+    <figcaption>
+        The final result is an interactive 3D textured model with animated motion and shadow. Try spinning and zooming in.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABCAHgDAREAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFAgEABv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABjWEMHjgoTzJ00ZPDA&#43;bV6NADRwUIh4oDJKAlCLQWlzZ4MAEiKdK4cjC5QLBsAFOBQQmRTRWDRKFao2XtTkqmaUVNnZRWTTI0bhKlSifQHhIKLGzsrFhQZw4TiMPlw6CCADAQaDATJ1Jywx8tnQZ0ycTanOmQZ1EllDZWOiRofDJlRiJSgNLWYlGEGDx//8QAIBAAAgIDAQEBAQEBAAAAAAAAAAECAxARMQQSIRMiQv/aAAgBAQABBQKunY6tHwfA60W1pDz85rjsVKFSUcsFn0cYiqGyUPyzp5&#43;xxS/yZDEi/jI9p5PlvTz9Rsp5Miz6JMv4&#43;x7Vx8u6ebsY/jRRyZvNq2nUxVtEfo/0W7x5exf4ynkzWYrZ8I/mh1ojFHrjrHm6uEFoZo0JERmxsgezHm6uGzeNMQj6WUz0f6P5sojprKK8y5/1XyzDxHP/xAAUEQEAAAAAAAAAAAAAAAAAAABw/9oACAEDAQE/AQf/xAAYEQEBAAMAAAAAAAAAAAAAAAARAAFQYP/aAAgBAgEBPwFmZmZmZmZmdbnjP//EABQQAQAAAAAAAAAAAAAAAAAAAHD/2gAIAQEABj8CB//EAB4QAAIDAQADAQEAAAAAAAAAAAABEBExISBBUWFx/9oACAEBAAE/IVIKCQqNehLhWzglZ/A6RwU58Qn5Gx0UYMdmhaCUUqUnJriFC9j3A4bwU7osPEtFCx&#43;HSUKuQtwFRiZF0KxaP4lvBlhQi6CW7DRT2ZmBdFi0SHThb6EfQ36EYHskysLaGNRKZHQsQhgeyTEozTZ&#43;QrGoZNWPgtC&#43;g7hoYHG4NL4NeYdmxDP/2gAMAwEAAgADAAAAEN8vSNea4IIJBIJ&#43;IIAIJJBBJIBBOgdBJNJAhIAJAAAJJBAAABJYABBOBBKJAAJwI4QBJ//EABsRAAMBAAMBAAAAAAAAAAAAAAABETAQICFA/9oACAEDAQE/EIQhCEIQhCEIQXmqHtS5rlnous2Rftuz6IeH/8QAGxEAAgMBAQEAAAAAAAAAAAAAESAAATBAECH/2gAIAQIBAT8QdwXIAuVsIIM68qfIClQhYdoYY0lYf//EAB0QAQEBAQEAAwEBAAAAAAAAAAEAETEhEEFRcZH/2gAIAQEAAT8QKoQ3L8d68g8xOXECjL&#43;YeC42DwS38keMkEOxef5ZwVblVbObuOghCk&#43;w&#43;rfIfb2LwQEgMnS2JOWE73WHiIBe4h7g9kgsXz4PJeyBtjsEd7pHRADtoexB5D7ZMOHIxz4Syo4JXXVmhNTq0upYsZXGNrJb7sBeeEfEO3DUHl6mRpsblKOIncWwYhnAQvO5XFhnznuKpZ58OmXKwW7Xe43C4v1Qvgzwk9tQ30ulmGaWfSP3uyzln1jHlLyZeQv7cICehZOP8g/C7Sv2exH0fUAWX29QPwifS4&#43;H/9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/webgl_gameboy/blender_uvmap_120x_blurred.jpg"
+            data-srcset="/images/projects/webgl_gameboy/blender_uvmap_320x.jpg 320w,
+                    /images/projects/webgl_gameboy/blender_uvmap_460x.jpg 460w,
+                    /images/projects/webgl_gameboy/blender_uvmap_640x.jpg 640w,
+                    /images/projects/webgl_gameboy/blender_uvmap_1080x.jpg 1080w,
+                    /images/projects/webgl_gameboy/blender_uvmap_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Several reference images were used to accurately model the GameBoy. The poly-count was kept low to ensure optimal performance.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABECAMAAAB9AgE2AAABWVBMVEVHcEwiIiDarQXVpwPWpwUqJyCvbgKhew8jIh/TogMhHxzKnQhjYzoeHhvSoQbPnwcmJCCZWAIiIR7VpgYmJiXcsAQnJSAqKCPdsQSiYQMnJyTIlQY2MSmTVwQeHhy4kxFWPRhORTiYWgYzLiWnZwGnZwK9hAB5TwynZwG1fASVWghEPzadYgigYQWYXQdUQCCBciechB7OnAjftQF9URSlZwPIkgB8UxRQQSqzdQBROhu0dwHCiAZeTzh3VSK2eQFZPhKsbgLTpgNZQhriuAHQngVUZFbftQJOXFHWpwXNmQW2eALTowPYqwXcsAHJlAXSpA/DjAW7gALGkAW/hgNJVErYtAtTVz&#43;Ag3mrkBhye4HHqCvnwQG7nhCkYQK5okFuZzHEnh3GpAntxwDJnhOomlezlzeHeCSQjnCaiSF7dTHSrxtYYUqSimLNqwedj1SRfiW9myWjjkYhVmrLAAAARHRSTlMAcFr1MFb9Bv0TmFn8hIy7yvvr30C72MCMMibg&#43;O6rixmh2Kv15cHtXNWw5MZIhr/fu/TfmWzq0HKQiuvy07ih87PP3A1YkIcAAAbUSURBVGjetdlrV9pYFAZgqQUqSqVKpaJFELEiiDMWR6qO1qUYCWACAZGpV4rXGfHy/z/M3vuckwCmXYtE3y&#43;E1JUne58Lgfb1mcY98Hbw/cfR/laj0WgVpZ2uFOWKKzY9n1qeWzAy/jzhAbe7r6cIuHF83Gjt7xx1Zmc/W8nPxJLz31KUZZ45PezdAso2YOno6GdHjqSCVnatxZJbPJuUb22ht8sL472WzOCvrNVSl/vzCHpdKpfX1uJ6Zk2yObW8MDDQM/zmE8KtRutA6m419DqXVTRt/a&#43;OTBiht8ObU4NvrcJYceugO5K0X8wVIFlIgdL/PKPD7y3Co0vHZmlgFyD7v8/B14&#43;f3liB3w9P1G/MUq8ftw5wVaH&#43;bKmx0/hqHY4/XN2a5Oqm3jiAcd8xd0m2A0/9&#43;cft2ZBJzm5vjls7Rzs72FCzivlpi/AgwGdDtb3/urJXGzp7OG5JCBSLJjK4cF6yBQ/Vqnt7u7u7ezx0WK2dPdQFDILU3Wd2&#43;qVhOK6dXdXbKn4WVrEkvRrMxvh5q1HGf7APE1rVe63DkpkrBtnyOu6G9zrghmQsG76gjVXNRtkuvGva6sZBGyxJ&#43;l5K72E/zeWK/S8AM1oc1YYYDINJELD/snCZNvLcy8BG2mA2xOT&#43;wHAZOg2fHoVXhXHVgPtDBGVJgoIRHn1huMpgtlEUscsgnmJ40QdF&#43;rh8RTinquoPoQoabFVFeAk&#43;j23A1V/CMJLN88fLy9PTCxGOnzdl2T5slMxXE4OLAKvNx8un&#43;/v7O5Z7oT&#43;C/AJw&#43;56JOxiHYXtSz8G9uz6kXPPcXVxcnjfhgajfJlxtI1loAxHw3eHhP5RDnuu7p8tHgHMwuezB1U62WmuH7&#43;&#43;4a&#43;h39wCrsHON2noQgLAHgJoefALR4esOGOmXgK9uz0xy9QBPe/s6fPirim08Zd7cPBi54nm4qVPBBF9cXx925o7G2EbFCD8&#43;1s1y3Chw&#43;PH04ro9tKqeYFYXbMD4QH&#43;OafKwx3lNUWS4LLg5WMfG7nHP8vQEBSOcswP3qwiqIrgRypCsgNVzY7u81PNIy9jycqKKm1pJU7IqfhrAZzt&#43;V5JlRVFQhjMFVW3qH0znRpr24VI5X64oWWJyjNVKpRKdySFskmaWfZWzunO9&#43;TQ8sZ53uVz5iqyiU8iSWimXKxqMMnVAzeE9sX6IFOzCMKvXXScnJ66yllXxerJWqlTALVdKBOO3UwG30QUuvxysYLUYqBhGGYGCWcVwizKHB63CedcJtFohWFbIhaJLipxlX8sLueehqSDjE4gNuJzP58slmdaSjBWDqmm6ayZTweJBwCI8uoSjiuuJwTihS7iBtMF8lrWFrXXZHoyrVmYuwIqmEUtDyKYQygJjv4fQJqPYhPv1PQs1hcLKybJdLMtLh27gLYnT9GdW4UEDZpeicgWu7550oOCQwCDILOxPliZsw7IYXpL1fsuifkVj870k7gxfbcFLavu0IlnTxASTuYDllmH6k4zhf2AbzhowXhh3L1E7P0suyBURkm3AE0tismgad0slcWWNv6G9LE&#43;wHpJtwWKyaJpeXYXvXuJYsETzF2r6&#43;sSwpd8yB6dg59J4dFVYhLebHcENrrQ&#43;MWsRnp1YrxgRYL67PlN5HRK39Ovt&#43;Ny32fhax9VcbYdmWaOIg3h8dpN&#43;Ke8d3orNGFc9oehvZ1hcM3iWHcdi8Xg8xgJHya3N1Nx42N07nAL4xMgHCKMJwcDBB8pnzHQyubWVTE5Dksnk/Px8CgoO9/x/EgDPT3/&#43;0KZSTgilSwMA3Bc9KxvpVCo9v4LZgKTTGUvwAsFGPvPEpqkcSHJl5cuX7yLbi5HVTCaV3vibsrgRiWScwZ5hd3hhOZ2EknR2WgTYNGVjY2V7&#43;/v3SZaxgCfjdGYii38nEgmiI6tOf69wnzuMvYaKsEhiqUxqYzq9iklHoLjtxOTkO8wIwA6CEyLRSMYf7BkewJI3VrCb&#43;gBCHxchEXIjEKhubOQdy4iPwYEEb0EiEHVYgKFk52oEGGrn9mI6tTyXWY0u&#43;gKBKCVCcqALdngCYxwe8VmBoeSgP&#43;OJRoHeTiS2F1dxAL3RgM8HdAB5kqO&#43;kZFuWJwYC1mB&#43;9xBv8OLpQV8Y2O&#43;qBev6g3B8ZgPTwCcyUALDIfDPr0FVuGw3&#43;n1QEIg&#43;0Jeh8Ph9dBNMBgZuJXXgR1eCMqBkIcdsUCnPV6n3w&#43;3FnoFOOh0OKjOUCjk8XjpFQ48UXwBNxgMvhLsd2IcVDe4HvTwHdyFA9xw&#43;PewtVmNCyropwjeQyDrP7puUzjAp/nkpEUY5XCQwniQsVAaeQfuwr&#43;A6QRuIInob3au/wHFNGmTeAsc3wAAAABJRU5ErkJggg== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/webgl_gameboy/gameboy_mat_120x_blurred.png"
+            data-srcset="/images/projects/webgl_gameboy/gameboy_mat_320x.png 320w,
+                    /images/projects/webgl_gameboy/gameboy_mat_460x.png 460w,
+                    /images/projects/webgl_gameboy/gameboy_mat_640x.png 640w,
+                    /images/projects/webgl_gameboy/gameboy_mat_1080x.png 1080w,
+                    /images/projects/webgl_gameboy/gameboy_mat_1920x.png 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Several photos of the original GameBoy were used to create the diffuse texture map. The UV map exported from Blender was used as the starting point.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABCAHgDAREAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFAgEABv/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/2gAMAwEAAhADEAAAAY8xkmmTgEYH6STzti4XwsHoz56OBLQRLcAHzhg8ehRlbykHFap5XTX87pQ6aSfqfPLtXguBIBvOWMp7E66KWcr0PnO9rh2NpVHopL&#43;n87etOpACIcHsJbZjz0D0qlZF4vfzK4tKb6cXfX5GL1xWUokRFqq8OtDnked0fVxobUnxODxuYpSKYFwRGpP03gdtryOtHopD&#43;k85/tybMGqzmSsxkGGFSPSfqvmvRocHRgh/S&#43;a56XOwBCUt2arWdBmhQnQZ59GOfTVLA7cKu9DC5qJ9MAmMwwnJyDgaYwkMEiwYkmeOozIkMJ//xAAiEAACAQQCAwEBAQAAAAAAAAAAAQIDBBExECESFDITIkH/2gAIAQEAAQUCpUcqtT8RyPMcuKUUz8URt0eomekyVr4ioH4Coot9Xepb5tdyXXZas6LnGFwyi&#43;rnT3GORUiVPCodSTyU4JqCSMouH0jPFHVzp7pcS1SX9Ppe14nuHuPPseRSWV4mCjq51/tCnk/BkqWFHqb/AKjK3bfrnqioNFN4TmeZR1c6X1Zx6fzUTxJYnT4wIqLpDiYwQWFcaX1ZzSi5onJYn90x8RJ6RkkZK3Z&#43;TIqcRSmOciP1AyNkZE5CGPmnzLS&#43;qWqg&#43;GLhn//EACARAAIDAAICAwEAAAAAAAAAAAABAgMREyAhMBASMUD/2gAIAQMBAT8B7pCghVacBKnBr1I8lOn3LPKJdsMM&#43;IkKkxVpDrLFiJdtPsRYyJC1JDvRzk7tH2UNOA4cJL4030IqRhKJYvPrRS/Bo/wu/ei9CswVzOclLf6P/8QAJBEAAgEEAgEEAwAAAAAAAAAAAAECAwQREiAxEAUUFSEwQEH/2gAIAQIBAT8ByZMmTJkyTlhFS5aHfOPZ8milfKbIyyZM/gn0NRLyK/gqEmWsXGZS65SngdUVQRW6K9eSZOtKRGu0i2e0yl1xY1k0JLDIFRZRWs9mKwF6eUbPVkFjw/LKlfUd8j3ezKMsrxqaoxzl0Xc/sb&#43;ynLDLWWY8GLlPovINs0ZCLyWXXBi5zt1IdlEVkinT1/Y//8QAGBAAAgMAAAAAAAAAAAAAAAAAITAAMWD/2gAIAQEABj8CSJTjr//EAB0QAQEBAAIDAQEAAAAAAAAAAAEAESExECBBUWH/2gAIAQEAAT8hCAMI2IUlFkbg6m3wJg3Yi/LP5DOpe3BpgOMJeJFm56vlPEfBq18ZY3lBmLeM/P6R/crVrOrxettz8COeOjZ/q/ZPTsWlicPplzcdubG&#43;pbC3CkbirGAvpg2YZHLyNDLESCCZt&#43;hLK6yPvgcNF0lS5&#43;aiZlmOeLn0Irjb&#43;&#43;yzXlHicEexkCS8NRfYGdEh&#43;Eh&#43;ET49Vj0Ot//aAAwDAQACAAMAAAAQT65Jl1yAgkwbAWggk0efG3kAD0bSYQgeumpTAEC&#43;FgFgkAKxckzEAlpPAEh4GSH/ABIw5//EAB0RAQEBAAIDAQEAAAAAAAAAAAEAERAgITAxQVH/2gAIAQMBAT8Qyyyyyyy04BRcwsGyPHpP8S/Uk8SI&#43;uxwYkjrAQkK8J9W9XBKkeDx5wE2XJ63mOSUw2MbJ4GW7W3t9WpBy0LLoCTt9wEAzOwPYcm4JWW3oMtvpJ7HH//EAB4RAQEBAAICAwEAAAAAAAAAAAEAESAhEDEwQVFh/9oACAECAQE/EOeBdJbrwg/WzA2LfgN8y3u9WGbHBvTyCfhOstJY52Eh3ZCUGHWzi2QIYWl00muSv1fwi2gGWnA8In3D6s5F3cmyGAsQHjeDyGKVhhZHBZLl7pLll9WPBDvxiaXsyZ9Q3cjOHBNgsk8vgnycnx//xAAiEAEBAQACAgICAwEAAAAAAAABABEhMVFxEEFhgZGhwbH/2gAIAQEAAT8QCITFyWFyWctpkZEnO4i&#43;QkHA30f6R2y05hvOUC4HqfObr3a&#43;bmxg1Ql8LtjILiDwi1SEgX3BLiAMnGsdXud4JXZc5NL3YBgoFwbC8daQR9ciRLi&#43;rZXL9oAOIwS0Lb97L8Sxv1TnJFsayci7QNT4oI6/V2ybn8wVCE1krpwH5g4/smmHm8&#43;yXcYku8TCvqP7XYrr9XbHT7kKEGGc5Kn1KnuGhsPqWr0Q3og8AkVz4B5dlF3zwL5jgNyV4OWuadTUnmECNcm/CQNoncIw7tEguxEACH3E89tP5zZSLB&#43;YDjLabzb3i4uZOdxyNljf4LP/AJWf/C2OH8X/AEiZ4uC58HJzu731d1//2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/webgl_gameboy/blender_full_texture_120x_blurred.jpg"
+            data-srcset="/images/projects/webgl_gameboy/blender_full_texture_320x.jpg 320w,
+                    /images/projects/webgl_gameboy/blender_full_texture_460x.jpg 460w,
+                    /images/projects/webgl_gameboy/blender_full_texture_640x.jpg 640w,
+                    /images/projects/webgl_gameboy/blender_full_texture_1080x.jpg 1080w,
+                    /images/projects/webgl_gameboy/blender_full_texture_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Final touches to the texture were painted on inside Blender, adding highlights and shadows around the buttons and d-pad.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

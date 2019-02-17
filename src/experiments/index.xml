@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Experiments on Andrew Mason, Creative Technologist</title>
+    <link>https://coderonfire.com/experiments/</link>
+    <description>Recent content in Experiments on Andrew Mason, Creative Technologist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    
+	<atom:link href="https://coderonfire.com/experiments/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://coderonfire.com/experiments/gameboy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/experiments/gameboy/</guid>
+      <description> Gameboy pocket webgl - coder on fire { &#34;@context&#34; : &#34;http://schema.org&#34;, &#34;@type&#34; : &#34;Person&#34;, &#34;name&#34; : &#34;Andrew Mason&#34;, &#34;jobTitle&#34;: &#34;Creative developer&#34;, &#34;email&#34;: &#34;andrew@coderonfire.com&#34;, &#34;url&#34; : &#34;https://www.coderonfire.com&#34;, &#34;sameAs&#34; : [ &#34;https://twitter.com/amason&#34;, &#34;https://github.com/andymason&#34; ] }    how was this made?
+Fullscreen
+     </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://coderonfire.com/experiments/glitchor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/experiments/glitchor/</guid>
+      <description>GLITCHOR. Generate image glitches.Drop image hereWorking...
+Use webcamorGlitch amountJPEG start position (top - bottom)Randomise glitchClear settingsJPEG ArtifactsScanlinesColour seperationBendStutterTintInvertThresholdBorderStrandsTV OverlayDesaturateWhite noiseSample image
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://coderonfire.com/experiments/room-47/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/experiments/room-47/</guid>
+      <description>ROOM 47body {background-color: #000;margin: 0;padding: 0;}audio {position: absolute;top: -1000px;left: -1000px;}a:link,a:visited,a:hover,a:active {border: none;}#bedroom {width: 90%;margin: 20px auto 0 auto;position: relative;overflow: hidden;display: grid;grid-gap: 12px;grid-template-columns: repeat(2, 1fr);grid-auto-rows: minmax(0, auto);max-width: 1200px;}@media (min-width: 600px) {#bedroom {margin-top: 30px;}}@media (min-width: 600px) {#bedroom {grid-template-columns: repeat(4, 1fr);}}@media (min-width: 900px) {#bedroom {grid-template-columns: repeat(5, 1fr);}}#time {color: #222;font-family: monospace;font-size: 11px;text-align: right;width: 90%;margin: 0 auto;padding: 10px;clear: both;max-width: 1200px;}.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://coderonfire.com/experiments/vhs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderonfire.com/experiments/vhs/</guid>
+      <description>Editor    Please enable JavaScript to use this application.
+ Glitchor v2     New window imgur upload  320x200 (C64) 320x256 (Amiga PAL) 320x512 (Amiga laced PAL) 480x320 640x256 (Amiga High-res PAL) 640x512 (Amiga High-res laced PAL) 640x480 800x600  Render  NOTE: Rendered images appears in pop-up windows. You will need to allow pop-ups in your browser to see the rendered image.</description>
+    </item>
+    
+  </channel>
+</rss>

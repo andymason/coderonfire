@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Beat the Hustler: A VR street con - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">Beat the Hustler: A VR street con</h1>
+        <p>Beat the hustler is an interactive 360 VR experience that places you in the shoes of a tourist playing the shell game. The aim of the game is to find the ball under the cup. However, unbeknownst to the player a team of pick-pockets are working the crowd.</p>
+
+<p>The idea was storyboarded and test-shot at the Guardian before filming took place near Tower Bridge. A GoPro Odyssey was used to film all scenes and later edited before bringing the footage into Unity.</p>
+
+<p>Unity was used to combine 360 video with real-time 3D interactions, allowing  users to play the shell game and later identify the pick-pockets. By using the DayDream SDK and PlayMaker I was able to transition the player between different videos while creating an immersive experience.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/360-video">360 video</a> </li>
+
+    <li><a href="/tags/unity3d">Unity3D</a> </li>
+
+    <li><a href="/tags/virtual-reality">Virtual Reality</a> </li>
+
+    <li><a href="/tags/the-guardian">the Guardian</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUCAwYBAAf/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/aAAwDAQACEAMQAAABYdSxxq2EOKYVkQOjh7aW0hqsEkz6TaHmu965II1qB70xausSJAxBmRHC0YBTmlDCNNNyXq6J5tKipQ3o52NEgQVNq1ZhVIFaFZNPBOruNWnPfKdMKA3hSRnNlrIYRZtyWU9M76AFW4V0gNysDOuO6&#43;VYcxJuU2rpDWqb4kt9OgSOh4bUzfgK1afOenkGOvObh&#43;I08pYNyk9SKwR1lqZu&#43;Vlz5LQZVUBZenMcxSs/npq46tEapgLWWpQ2YrKEayIIFY6QInjopvp5lbjkXUdlbjGkHqwTGebxyMICy14Sxco2mQq9spRRmV&#43;NacPjMMYGJ2//xAAiEAABBAIDAQADAQAAAAAAAAABAAIDEQQSEyExIgUQQTL/2gAIAQEAAQUC41oFI0UxvfGjGuNca41xriUjKEo7hjsxRUJGUJpdXc1iI27&#43;LRahaKlSyfJP9Yje2DqXLaRkO2IKidRM3TZkJrQedhI2twppg0STbrQk4zKDSiCtwvUxyL0XlYhsygakusErJd1hs2LYWrShJYUs6MhuCS070LpMk1Rylj/SnIapnrA9HjipnhSH9RuotdY3pNtyERQgUfwMkkok7fjx0shxR2JmH7hemt3djw0JPlcwRnCL9lps/EGjJZgE&#43;a0XqRO9TSsApvmYabLIb5SsY2g7VwyenybEBUiU70pixD9NcazCal9/uF5Oew4qyg41EV//xAAbEQADAQEBAQEAAAAAAAAAAAAAAREQAhIgMP/aAAgBAwEBPwH9UJEOeR8DWwhNmcoSzkZ0iHkh5GiHkhDhCWIo95INE3yJC25CZ6xlFqfwvjyQaxb6Hq1FKNjFs&#43;VtKX8l9r4//8QAHREAAgIDAQEBAAAAAAAAAAAAAAECERASIAMTMP/aAAgBAgEBPwHKzRXLJMlI2JTI&#43;gmWWbG5sWWORZNjZZIRGZubjmfQUzcfobmxOQ8Ua8ejN3ZCRebGPhl4krPkKNCKHmuGVizYsi8SwkfMXDG8UULDEiJsLiWaKKxX4P8AP//EABYQAQEBAAAAAAAAAAAAAAAAABFgAP/aAAgBAQAGPwKDMwf/xAAbEAEBAQEBAQEBAAAAAAAAAAABABEhEDFRQf/aAAgBAQABPyHH56INxnyH8kflj8sfkH8g/kNF4M/jbzcST4IBMHx0zzyxxYHLZsYaoNu2TDdjwYP2w4QO7&#43;pavgu8I3cu0niQ6yDiznRCPul63cLijFOzuIukY&#43;WOFr5P8na2zYt/QsJ4N8nSZ7RnIG3HBDxNts/hbDbkz7adjAFyGPLbhCOT6rrMWBk/CHdJkx/t&#43;iGcFmXN2KDESHhhgU2xASG8bv8AZz2HW&#43;MZ/rbH2&#43;&#43;TZPw&#43;pgZf0bd7Lq3wIT9kbfYv1Ovb/9oADAMBAAIAAwAAABBYwWODFWWc27Au/wDdWFdFzNIw1JsmwWYOKhY4mjxsgLTUAfpvkyS2LNku1x1oNcz/AKAGp//EABoRAAMBAQEBAAAAAAAAAAAAAAABERAhIDH/2gAIAQMBAT8QEse0pchMW76nMgNEFW0FibEJE4dMoIvjWnGbI4QeHaw8TpE1KQlEhATKIS7LmU7hhxCYgZRMYbKJXCzP7ijcEE1i0SOCCBDPrCY&#43;5Y1i8Gw3LKJiEiFHixSjH4UTKf/EABoRAQEBAQEBAQAAAAAAAAAAAAEAERAhIDH/2gAIAQIBAT8Qy0vGEEFixYWF5KTsL05cn23jgk6NeB1eV7cqWNgRWYQdhswXps5bSsnXAZFtmeRRUt3uzKlvWQXjjeJ9/IrZKjo3jMkEx1wHyXN78SjqDg&#43;yrUEh8vTw8R54OPDEQM4s5C3IYjjzkERMSWSTf//EAB0QAQEBAQEBAQEBAQAAAAAAAAEAESExQVEQkWH/2gAIAQEAAT8QZJ/C0cCajPtv/QudoUVFEcuSmZABn2Fv4l/ElZuY2CWP19YgW24QE1hPDZwaEfJH6JyaGfsqEsofyFA7A72AWMNRZBumzsvYM7zZBEbOqJKUSf0bs32wMEI5toF/2xwWQaWCXLpxvm2M/N4VuT9LNt22eBYn77AXNzBk1KYYhurIAtxs5MGth9tMvLZlkX6WBQQODrFlPJg7&#43;SrXIemkx7L2Fu2e73JlmwYLFDuBCuYMrxiHX2dlkS5HLdOWaQijNEYtTDsaLEOrJnhgRyos&#43;B/2McdniH2HRzlqgWj21cldmpMhOMHZ2xOZ5IA9y1YzYY64WrYEvkBzOWm&#43;7txbhT1rJE5LbrjLG/4l7RIFiTEGP8LNhnPi6dt//9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/hustle/hustle_video_capture_120x_blurred.jpg"
+            data-srcset="/images/projects/hustle/hustle_video_capture_320x.jpg 320w,
+                    /images/projects/hustle/hustle_video_capture_460x.jpg 460w,
+                    /images/projects/hustle/hustle_video_capture_640x.jpg 640w,
+                    /images/projects/hustle/hustle_video_capture_1080x.jpg 1080w,
+                    /images/projects/hustle/hustle_video_capture_1920x.jpg 1920w"
+            alt="Screen capture of website">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        360 filming took place near Tower Bridge. You play as the <em>&ldquo;mark&rdquo;</em> in a street con choosing where the hidden ball is and searching for the secret pick-pocket
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAwABAgQFBgf/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAB8/luctisjuAocafHQdxtwFVbmIWGpG9jt0Pk6Esp&#43;nGRSzem8nSO5V9HPB3jP1gcs1VyxsY738aaTN6YpVoZ1c57u2ZXTGVrnC5EMIR2PDvg6Ym8aaa&#43;N383mNWGsWbJJS1gQwhG3y6ZupSssWauNGlxNSnqW7LEV7ICEI1JErA0PJO0RTWNTBgxhCNSS1a4IlnJLQGWRtIkVEIQjS58y0K6HbEciApLIiCGHEU8Ye2A1rCHGtYcYiIQj//EACEQAAMAAwADAAMBAQAAAAAAAAABAgMREgQTIBAUIQUy/9oACAEBAAEFAv10R4PSvwtP9IrxtE&#43;Ptx/nbV&#43;FoXhF&#43;LyPCeo9KPUj1IWt&#43;LU83Mt5XMltN49J&#43;Pknipmnm5lZ62P5wY2z/gfkIzW6F1uMbIrkm/55N7HsfytSvNyMWV9Y62YMaZaSnycrmsXks62U1qn81kZm3R6yE0Ysuis21nXQoac7N/yvrkcGhQKDJGvyivmSUWaQr0TRmY/wivlUj2FZD2HR2Ohs2bGzZs2bPZR7KPZR3R3R3R3R3R3R3R2zpnTOmdM//8QAGhEAAgMBAQAAAAAAAAAAAAAAAAEQERIgMP/aAAgBAwEBPwGjJkooowYMldUIY5QxjcIcqXwxj8LhRY2WPrRoss0aNTfS4vzXFedlifrXv//EABwRAAMAAwEBAQAAAAAAAAAAAAABEQIQMAMgUP/aAAgBAgEBPwEfpBZ0umx&#43;ovSlL9M9MTBC0zPAwQuDQkLVGJC4Imm9QnCE20T8ilL1nf8A/8QAGxAAAgMAAwAAAAAAAAAAAAAAADEQETAhQGD/2gAIAQEABj8CEIU3Qhdh7cTc14Rj2//EAB8QAAMAAQUBAQEAAAAAAAAAAAABESEQMUFRYSAwcf/aAAgBAQABPyHghnUHwCeUL4mEg4xrwNgVwEdCW7ChsPqPLSYRlELJjTzKmCwUI8QnZpRSjZlWJrmIDbGUgmrE4UXnRzuMRnkUfxtog3Q7k9BCGEjBGb4zn1Eb&#43;O1obtGAxR8Rj3TEDIJ8ymZBbG8e0VEBxFQ303aMbElRKQSxLRv/AAlHuRNxHZ/RPYlXIt8iKJBIKGhBBGqz7T2PY9j2H2Hoew&#43;09z3Pc9z/2gAMAwEAAgADAAAAEHCEvSJWJNwlt&#43;OpIjgFZgCB9eiNlJJNV&#43;Hq4JIFvy9BBJJAE/4RJIru/wAgAQDjj9iQAAf/xAAaEQEBAQEBAQEAAAAAAAAAAAABABEQMCAh/9oACAEDAQE/EINlnLSiZRw54GyZ0jC/XAbBkjPMMvBBBI&#43;Icl34WYOwj8nl/X2zMYQ4MW2fMDPqYGTHgPnS223yxYQfGeP/xAAbEQEBAQEBAQEBAAAAAAAAAAABABEQIDAhMf/aAAgBAgEBPxBciUfAbAgHIuJ6JSRZiF/IqSbORg4x3Ymw4Zh3p31rfqJmctjUTI9FMRzWKGR8Ass5scPgeMgmPgczVttvD4AsIPGfH//EACIQAQEBAAICAgIDAQAAAAAAAAEAESExEFEgQWHBcaGx0f/aAAgBAQABPxDdAZ/8pfpRf8AmEbnjvYUuvV&#43;o0rT/AEu4h/p4J3QtfSM&#43;lxVyKQOp3gyViIHiYsO5JRrJXkyVDJ54S7lz4g8J4KReOcgkAv8AMiqMcbYJ3gB5mIHqCIWOssC4Ntrbahg48SGUTNjILsogTfhwW2WDPNMl6d26Ag1tH4YEFBHdYDIiULJxqe4ebcGzIHbWDJtjseTXJ0zLnmA4ZakJeCQu5bHgnaBPB7&#43;AXFgi2h0nkB4ga1uKs&#43;UDtwlMedViC6Jj1kZlXZ0FN5n2F7pB&#43;y98vbj3X5788bRxjO/lbbU8Ut&#43;PTb//2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/hustle/hustle_unity_capture_120x_blurred.jpg"
+            data-srcset="/images/projects/hustle/hustle_unity_capture_320x.jpg 320w,
+                    /images/projects/hustle/hustle_unity_capture_460x.jpg 460w,
+                    /images/projects/hustle/hustle_unity_capture_640x.jpg 640w,
+                    /images/projects/hustle/hustle_unity_capture_1080x.jpg 1080w,
+                    /images/projects/hustle/hustle_unity_capture_1920x.jpg 1920w"
+            alt="Screen capture of website">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        The game was built in Unity using PlayMaker and DayDream&rsquo;s SDK. Spatial audio and carefully edited videos transitioned players from one scene to the next.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAwEBAQEBAAAAAAAAAAAAAwQFBgIBAAf/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/2gAMAwEAAhADEAAAAdd6HniKhIGwFsMgWAgx8OTu9uwTo9SNjq3RQDKEgRE7m62bQnskfk7NL0c3h3CO682FYyUFNjgwwymwaxl8/bZE0QgeXrtGcq&#43;PPoepGdfmAMObWLpI5ev4HIdXNYl1aPhsXzzU53ZyYL3OYrXpo2T6uEDIcGtRVJVpbZN11Uehznd7xem5xMOyYz3OWT3K/ijSFEBfCcw9x0Y2XxOHApu&#43;f0PcFF6DKexyLdC1nExV1C7lTGZUtrwMhsnjV571Yv3BvgM13w9qXqJFyOAWl0Xahta2w75LZidHUp4u5KT6LTamqpPNolNdLbDXaEFo7DuFNuVenO3ACTzXZbbP&#43;g0TNTWxI4yg/8QAJBAAAgICAQQDAAMAAAAAAAAAAQIAAwQREiEiIzEFEzIUM0H/2gAIAQEAAQUCKwrCsKwrOMI1ARNTjOMCxFladPrnGN0nSPC/cB0yui0kmyte19CIQYqiACcws/kLsWjWXkdUyCJkZoAryeTLd22uzSlTy2yq&#43;Ttlt1BcQr5&#43;ic7cF8stKj7eT3nSXWFrMSswDtpXZrpG7q/HepF25vxZAbmOcDNMzI64r8nzFP1ovlx2ADXLKXEpcTKuAGVYvI397ZGq67A7NX01MqYTd&#43;Q4NPplu1GtZnoZuCXPMm1tZVjSjZa/&#43;up&#43;LUXhksOplmY/Llpytr8YH21XGJaoAuXd1isuRreP7v8AyfdTMspYWBm5TCQFskhEyW2wbUS0zkZzMNpllp38f3PfV4hX5Ho8a2Gtknx47vk/wfdkq9/4Y5hnxv7HWq4at90ZP7//xAAfEQACAwACAwEBAAAAAAAAAAAAAQIDERASICEwEzH/2gAIAQMBAT8Bwwwwwww6mc4JCR1OphhhXVqLK8IwPx9EqyNWjow6CiJGDiQq0nTgoFa9E6tI1Cj6HUQjjHBMlSOJnGlJcxEEOJGs6jiP0yLJfwkjOMIvCT0RGR3IMfFhGRKwb80IhIchsmxD&#43;CImjkdhiRL4xfLNES&#43;MeXwh&#43;H//xAAgEQACAwACAgMBAAAAAAAAAAAAAQIDERASBCETIDEw/9oACAECAQE/AdNNNOxpp2NNNNGxyOx2Ox2OxO3CFmkpju9kbB24K/T5ByGzsKRKzCNunYmRtwneO1EfKHPUKWCtFIb4wtKlxaxyL7mLyCFvspl2iNEf0jzpJaRWGk/ZOHo8iLPZXFni7h10VZn3wkXVJnwIrr9lUMQuWvqhkySbFWxVvSH4J/yaMMEjBIwf1XL5XC4fCP/EABwQAAEEAwEAAAAAAAAAAAAAABEAIDFAASEwEP/aAAgBAQAGPwK/pbUuHhQUqWBGoWFp5CgM8ZaaP//EAB8QAAMBAQEBAQADAQAAAAAAAAABESExURBBIGFxgf/aAAgBAQABPyH&#43;IAMfsGHDn4XwalAkGFXRoRJCMiHRohONiGlFSMPgWEl05KadGKXO4JxDRow1Ub8NsdUyZb8C7wcsDbRJ0fWxdDWDIJFOiNRIXf8Ag4z0TJrR1/yVmiHpCbkmdk2V4Me/RWQk5SFNMn1kbRB6Qtok/hRbE5InwfaJSaTl/DqPSYoSQSyjNtjT6Q2zA1S2MqqKIbiPRohmvjKqTZCU/WOtEbolFWyjEVlCfIs1HI/g58GOPuUz6f2i6DPQ0KVpL8GYfpOSOxOBUGMm3os&#43;dDuDKdDRRVr4Ix9PXwy8P//aAAwDAQACAAMAAAAQDwCceN1CIqtZF/PCPdjCKkQPzopAvqiKnZ4ux5HyPePKi3U8C&#43;gA&#43;LB5XHi4KkQTlIa3/8QAGxEBAQEBAQEBAQAAAAAAAAAAAQARECEgMUH/2gAIAQMBAT8QYx4blHApxZZ8vMa09Q7Wy2YPuyZFMLZYdJcOC9bHEy2YZfFv7DBkYbYsTL1ZgjrzBIpzeUGNok9uMjrYe2UeoGySmWBsZMtG2fglaWUnlyVeHMPzsvbGQBgZGRF4DGXh8jI2SMs4fktfgie/u/ksuLz4N//EABsRAQEBAQEBAQEAAAAAAAAAAAEAERAhMUEg/9oACAECAQE/ECEOOI1Ysxro8ftyUhGKsslmSTcjhK9WvFJN1b2X3t8EIet90G5su06nWVJZXbJb/JogCY9iP2TM2WjGVqLy2wnvRhYt0MGpTAYeWV5LIOPMmAzI3Y0iMxwCST&#43;B4IYWtjLVG3JIkOkvE6EEmxyLELBgjxeIbNmZR22Q6/Of3j//xAAeEAEBAQEBAQEAAwEAAAAAAAABABEhMVFBYXGRof/aAAgBAQABPxBPk/yf5fw3Sf5ENmHJd7CFvk3yT5NnkIaRPCNPL1gSeKMjZHX9iSvQ9y1gzZkR5emL8lOzy6elq0cnyMxoeTj/ACTO8p&#43;Df7jza7LCfLIBSD2e3cjgX2EiwdN3HgW76n82eev5ur/6kCzz7Bhp2fhxySlpv2Xttjj7lh/aCARSwnfmQ3Zsg9itzNtpOEjP4SwFesBa5N1DnzhEmJASWcJqT5ftEv0xSD38s6jrZY3kBxMm0yC/q4aWBkfZErAu3NljXcuAU0RKTUWBeySN/Jj1&#43;wAW5GwctLGMDftoeWTse3C3iz5G2zCAHEmA7kvwe2AHexVxzLwfdugOR4G39&#43;cAeyUARzX7a7exsPJy92Hdzs1/sq6mK97HacGiF&#43;SfGjG7GyNCG3jkD3uxJyTmViAu2sbd9SY/pC87OP5AEwMB43b/2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/hustle/hustle_promo_120x_blurred.jpg"
+            data-srcset="/images/projects/hustle/hustle_promo_320x.jpg 320w,
+                    /images/projects/hustle/hustle_promo_460x.jpg 460w,
+                    /images/projects/hustle/hustle_promo_640x.jpg 640w,
+                    /images/projects/hustle/hustle_promo_1080x.jpg 1080w,
+                    /images/projects/hustle/hustle_promo_1920x.jpg 1920w"
+            alt="Actors in the Hustle performance">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Several actors were used to recreate the hustle scene. Careful direction was needed to ensure the user felt as if they where present while playing.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

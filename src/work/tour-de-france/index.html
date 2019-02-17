@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Tour de France WebGL - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">Tour de France WebGL</h1>
+        <p>I was commissioned to create a data-visualisation that showcased the history of the Tour de France&rsquo;s most famous hill climbs, Alpe D&rsquo;Huez. To bring the data to life I combined satellite photograph with accurate elevation data to create a <a href="https://www.theguardian.com/sport/ng-interactive/2015/jul/23/tour-de-france-the-climb-of-alpe-dhuez-interactive">3D WebGL reconstruction of the mountain course</a>.</p>
+
+<p>Careful attention was given to the mobile UX with the inclusion of both tap and swipe navigation. An image based non-WebGL alternative was included as a fall-back for older browsers.</p>
+
+<p>I wrote a detailed <a href="https://source.opennews.org/articles/how-we-made-3d-tour-de-france/">making-of for Source</a> that breaks down the development process and how the 3D model was generated.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/webgl">WebGL</a> </li>
+
+    <li><a href="/tags/the-guardian">the Guardian</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    <div class="video-container">
+        <iframe src="https://player.vimeo.com/video/244094413?color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+
+    <figcaption>
+        The <a href="https://www.theguardian.com/sport/ng-interactive/2015/jul/23/tour-de-france-the-climb-of-alpe-dhuez-interactive">data-visualisation</a> combined 3D animation with linear navigation to guide the user from one stage to the next.
+    </figcaption>
+
+</figure>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABHAHgDAREAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAwQCBQEGBwAI/8QAGAEAAwEBAAAAAAAAAAAAAAAAAAECAwT/2gAMAwEAAhADEAAAAefZ34ezYakJJc7LvkHSa9zU53Y2dalvFSSkLIfPXNrrus2cVZIFpFntizvgTTMc2SNupYas1rICxnIOGculdSrKTDYrix6OQ/Rg4UZWXDXqeO9gNbXYsQaY4Zz3CkhLGwgi9fKx0Ysy45b2PP09QqX2hVcapjPLhHNt4Q0zBm4j0ZiqZyNTrZRfTrzsGoAG9DRGiQ1025MMBc0lZrog3YLSwh75cOMkGB5FrUNdjAkwWB1qDMgAqFG1SoAyDIZDXoobUhDDKfqQRTDzDTVu0oxsG0eRUJ5CVKKIc&#43;kNJjrGWeQTn0srRNZkzKB43//EACYQAAEEAQQBAwUAAAAAAAAAAAEAAgMRBBASITMxEyIjBRQyQUL/2gAIAQEAAQUCzoqdhHmOk4qJ1GF/tldak5T4&#43;fp7flwuouQKvTKi3DaY3xSoeN9OjyOBLaDlILWHxLh9RCB1IU0Nos2n1KbGSXAJlpqJWL24XUneWHTcE8hOba9FMipeEzXCb8mH1pwTdGxuUsZqONy2lAFOC8IPTeVidmH1ohVyE/EbZxQUzCbRwWKTDbUmI6zhuX2T7jxSBjY/yY/tYDpWkirkFTvIUUjnEtCoLaFNwMMkv/kPTHXq8LYtqMdpsQCeFtQaiy1BGAT&#43;O03G3UhAIhUqRCrVnloVa/v/xAAfEQACAwACAwEBAAAAAAAAAAAAAQIQEQMSICEwE0D/2gAIAQMBAT8BkRNGxsbNNF7PzMMHbraZJ4S5DuKbI8omJjV74M5WK4wFUfZJVng0ckNOh0IQEh1FkvfhlMbpIVO9GaadjR2hG&#43;G/JfPP4H8v/8QAHREAAgMBAQEBAQAAAAAAAAAAAAECEBEgEgMwMf/aAAgBAgEBPwGLJ2kRQkNGCYzOEz&#43;jRhERGJ5HAcRiY1aVJ381WjZKdoarb0TPmxMciUxsVJjrKdRQj2eh0uWjDyeRLhmfkuc/LTePRvG8MaeitmPRWzHp/8QAGhAAAgMBAQAAAAAAAAAAAAAAATAAICExUP/aAAgBAQAGPwJIgcIHCBwgRywgrymP2meL/8QAIBAAAwACAgIDAQAAAAAAAAAAAAERECExQVFxIGGhgf/aAAgBAQABPyFlIIUMaBBJELngK1hOoJXsGnowUwop&#43;sY7SHtHQGKKeSIYhBP6D8g6kNCEU0K2gzQVA2rFBjsRB77j8g0aiiwnEQhysSNsdQ28EmC5qxCzjTEeByoNA7yEFo3YNSUJiTocBAHch15ZwVYLsQ30LoG&#43;IYkZqIQ8khNiCCE2iRQ50PrF4TojZULSkXhLF2INxHND&#43;zBQwk2ijgmEYhF&#43;BKL2wwJEEFkSJTEY/9oADAMBAAIAAwAAABBB87NGZSVAVieOThSip9Be4WBa3XCYDcSYPURvWMR4zsTN5nKBUSSaNqZFGTcssgCp6U//xAAbEQEBAQEBAQEBAAAAAAAAAAABABEQITEgUf/aAAgBAwEBPxASjgwOLMyIh9jHkbhnRseRVnDP4WmJJ8tOGnsmcYvNlLt6gINn&#43;wyGGLN4zLLLwkgiEvEQ6xvCbRkiJkoJBgjPy&#43;uEeL6jHJGrZLOFPiekXfy8zp/TPdWd2xs/GcZiEyRJwhMlJ4WmX//EABsRAQEBAQEBAQEAAAAAAAAAAAEAERAhIDFB/9oACAECAQE/EKGyWWzY8EyUMmS2NSZ3NtBxIMivHELGF4eGknT0tIPYCCM4xOS7EdLLgJRI4XbxgyA5avWd75sglkK3pPCUSmV/ei3yYHl3GbHjBx&#43;o6MvwsvgNkfZ3JYt5uc46tmOEPOIGCC/EwDsc/HB//8QAIBABAQEAAgICAwEAAAAAAAAAAQARITFRkRBBYXGBof/aAAgBAQABPxBkeEe89hIkkyIX5gvDqJLKYqKIp4X8qhHNs0CCy4aclhBDZgi3L2MmumLKH2nHNwQ&#43;NFsOTt2pabamGiKcbV8MjzvLQa7kQvsGMmxO8&#43;Kfc8Ikk7HwxciTGM2AlPqF7nM4GcWFNuHCROeotHzZEeLIhtnK5HwANCKdydxevV2FD9Xh8y&#43;K0AscCWwZ92n6rEycWggx8g9Q1H1AHH1cgj1DwNyMS5Bd4Rd&#43;oDtZu6Yi3GF0jcMhsIh8RcslzJWlthMmgjBcZ9SHr6it/nBB82Cz8TZbLHp8afE3iMdQmaWIDbHgLR6&#43;EOWkdAG1IeJbo2bpDCzuQPMO9RJ1CE0BdZL6hsyhywdjxEPSeryL/9k= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/tour_de_france/tour_de_france_mobile_screenshots_120x_blurred.jpg"
+            data-srcset="/images/projects/tour_de_france/tour_de_france_mobile_screenshots_320x.jpg 320w,
+                    /images/projects/tour_de_france/tour_de_france_mobile_screenshots_460x.jpg 460w,
+                    /images/projects/tour_de_france/tour_de_france_mobile_screenshots_640x.jpg 640w,
+                    /images/projects/tour_de_france/tour_de_france_mobile_screenshots_1080x.jpg 1080w,
+                    /images/projects/tour_de_france/tour_de_france_mobile_screenshots_1920x.jpg 1920w"
+            alt="Screen captures of the mobile website version">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        The mobile version was tailored for touch interaction and screen constraints while maintaining smooth 3D animations on supported devices, falling back to image fade transitions if needed.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABVBAMAAABweD0JAAAAKlBMVEU2NzRFR0VAQDpPTUYrKSSqdSe7fyyeZxtVVVBxcm9jTy5jZWGEYi6Agn9uScVYAAAE60lEQVRYw83YPW7jOBQAYEJwNdVIaraUmC6dzEaYylio2l52M610A8PNNos0AuYEQTBNtjN8AA98AAOBL5DCd5n3xz9ZThxggBkWiS37E6lH8pG0UvpqURfFXtK6kP/aGDPXZebVnaFL9IXE3SUZ3Rs&#43;1nfbK2Wu5easE12macoOXmR4VW93J1teWMmb/zWRlDVabFAKMucXSt3tTuvN5hSVdQvltCVcUiVUnaFSGSlZoe539FUsq83puIGyXvZ93319iTHaYXgwJsSnFr7ak95snIUrL/MAl9jUehgGj&#43;eI&#43;bvdskeMzej5gsXOQsVXMNYFuJ3EHCLE1Gz&#43;O3fNdrhrlxHWgMXaUl/Ba9cMj6FE1oYtuw3nUZht2N7CbYDrIFBo6VYx7iK88tgIrqANZEnLIIlxhxFfBji38a34PqIJH2WA9d2KsLz9GuKaWpyOsd6ejkcYz8c1jk9oRUdDbR1jLimOUbY1NTuxswimA&#43;IlDXLQ/07gjDttsGMbquYCzSfcM95M4ajHEds8tD1hc13NU7ga41mjOFNg2HlsR7gMsJvLdBPGCutffNrhQ7dubk7hsAUV4KaBplncIl7ZmvUIVwHGdKYQUyZsCK9cSrjE7onZZiFObD6yeKtHAZNXleSlwuFZ8/cNOCXr14QZPrOGewBe&#43;liH2Gp6RdauIIThL&#43;FuGkuiTulps2Adwq7CxiPuaUpNYOoaxlm4iDUxhkkV45JxipUiDlYqwbP3MbWeAo2&#43;5PovMYd7NYFpoaMLML6kqyK8lBnZ&#43;kESlIyWHeoxh/0zQ0LBrl5jJrmKzTSmlG/T0I0Ym/3PDjOnX/Wu4jzEixBLHr2GNQWM85nFzQj3U9jIYstDJrN4FuF2GueGR0jJr2P8iXHXttMBy2U6ldKKCezs1DMHGNvN0W48bi9wXvlQF7KPymU3ZPGCcDeBjceSp2mTUYX4/l2sI2w4ewa4tak7eOYIJ7KtqocL3F1gpVNTOVyIRvwwvwW7dnPWc7gqqKtcwIJHDnEV9FSRTGDqqsDK3lPxfrWSWQEloYDB6p69jxPe7Fa&#43;bsFhwMZ4NYX9/tfjGT9zWG&#43;7sZgn8AV2/aw42mtO&#43;bLmOExVByGDC3S7jD&#43;GVRoX96OsUrhOb2DbL1iHUE4JtOzgx7ivhe/k23i7//KslT9bZPHhRMabcnPuizua8Gnj2R&#43;E/BqhVHi6SXxyu98Suec7PNtvK953TBWPCzprQeQXSVTVW8U2&#43;7OSuFt9g1Xxesn4Ywxg45IwLyK3wUVji6T/j&#43;DmD8DNx5/5F&#43;HfGjD1ITyLHlmyCu0o1Q0DtGG/4E0ozozFG79gRL830GybcYsTnluyrsLhNb3IAPFyq9Loxwi3C3BrTHhxcOWBkpqSdB7vW/DsSHsBux1h8u1gC3M1pH/V&#43;HIwATZD8BbaX1v5SOVw2OPJFDBdhzdD2FA8vZW006QNUM31/WD7&#43;HRAW6XKpNKafeXSh45iBfFg/PjoMWVyZXLAeGFfFYlLbLIc2re1h4T3EjBYObg5h/&#43;CPbyOBklS/7jA1Gx4WL7tYeBDQDH&#43;&#43;Qly5Lcx5u4C7GJI3YEdnNsTmBxI8jGmAA&#43;DCiLBId3b6MtogBvUiM9QXi3mbzoMH7l7uBvxaKConM9Ou6GipP/OrryGN3oiDfi7fBpQh7&#43;fR&#43;WVGkOBMBF&#43;CvBPzNq1odnCFvYAAAAASUVORK5CYII= )" >
+        <img
+            class="lazyload"
+            src="/images/projects/tour_de_france/tour_de_france_blender_120x_blurred.png"
+            data-srcset="/images/projects/tour_de_france/tour_de_france_blender_320x.png 320w,
+                    /images/projects/tour_de_france/tour_de_france_blender_460x.png 460w,
+                    /images/projects/tour_de_france/tour_de_france_blender_640x.png 640w,
+                    /images/projects/tour_de_france/tour_de_france_blender_1080x.png 1080w,
+                    /images/projects/tour_de_france/tour_de_france_blender_1920x.png 1920w"
+            alt="Screen capture of Blender">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        A key aspect of developing the 3D assets for the projects was optimisation. Blender was used to reduce the polygon count and therefore file size, ensuring fast load times.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="https://www.theguardian.com/sport/ng-interactive/2015/jul/23/tour-de-france-the-climb-of-alpe-dhuez-interactive?debug=true" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABJAHgDAREAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAMEBQYHAQII/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/9oADAMBAAIQAxAAAAHZQORHZ1FY01qKxub3izdOatAFMTLUQPoxpKK9jVP4dobU53x3ltTK69Odk6ZdC9lBTFuvFI&#43;p&#43;PemYtX49Gc236Z89CfOp4r5ZKyy3Nq68qLuYZY3PojCmcOjy3xuMOnHx6fOy8fsU5dUqlM6mJLD0xE9ueI01PoDOazz1J9DTpIzr5&#43;enzRXz/elz6o1dYucshqNdZo9ImiJl8yxrmo&#43;93z2uesJ4fctm2Y1ipeunDyA2TKZmr2eUeevxKTqh4vdaDQtSYroAAHkodznaeYXsfS2fO7zT&#43;gAAAAg0ynUeFniySyqrAAAAAA2SqU7J2Ha9AAAAAD/xAApEAACAgEEAQMCBwAAAAAAAAABAgADBAUREiEQBhMwMTIVFiAiIzNB/9oACAEBAAEFAvBO0uyFSPqCiPqQ2fUG5YWaGiOGHnXLzUluqWcvxOweHcKMzNCzIymaPaTAxhlVxRtPzelykMW1W8epP6mI9xysscKNQzu7LC8M2m&#43;0Z4D2lhWUXvvjZG0otDL6nP8AHcx58zNTzCsaw2Oq9OIT246/3cT3djj2bxWMwLTPUfdV6nnxM1mnupQDzUCxwY31LdW2d8&#43;uLO2l4LtF0/rHw&#43;M1LB95H0Dc/l6atVyTIJRja0Fh3TsZA6ZSStZmmYbO&#43;DjitNvG04icRMlOSatTxsIglbR/3Radzp&#43;ncziYi1Afqb6a3VH23CxUMrxnaYOAd8agVr8Gp0&#43;5VkYVgtxsKwzG02UYSLErC/Fd9t3348rg&#43;L//xAAfEQACAgMAAwEBAAAAAAAAAAAAAQIRAxASBCAwIUD/2gAIAQMBAT8B2kcnIoko&#43;1ie0hIbOi9NFFbmQ2i9LdFDQ1qitLVk8vIvK/SE7LLL0/Wy9ZY9EfH/AEgqLLLOhv3kzJnpmHN0L6Mng6Zhw8iX2Rf1r&#43;r/xAAgEQACAgMAAwADAAAAAAAAAAAAAQIRAxASICEwFDFQ/9oACAECAQE/AduR2dDkRl5Uc7lIbsjGziiWossvcSWmyRQvRdj30KQnqyxjYkckMfR&#43;PSJxooorUfBo5FEoxuiWX0T9nOuTgUfNGPFZlx0P6foxZqMuWxv6oZX8f//EABwQAAICAwEBAAAAAAAAAAAAAAABITEQESAwQP/aAAgBAQAGPwLNlllkvl6LLzDL5ll5Y86T7hlkvDHhrz1h42T4TnRRQx9p6FHTH1torwbNZolFeLIRRKK&#43;n//EAB8QAQEAAwACAwEBAAAAAAAAAAEAESExEEEwUWEgcf/aAAgBAQABPyHwA34QhORFaTGEZgPl5LCsoZX3HjIFgEhBi3ZnWUUwx4FBc3IbOSZG6fd6k7VsCollbOdvB6ZfDhI2mZHVeONu9ynuXFssZ2YLhuiftGKR1hwxYow3Ka/&#43;XBX4TZ4eMtdkuFF3jNojSM4YEiBDauoHnFqhI7VXKgg6&#43;xe0l2kNPAWaCcGvhoD6sEh7fnfnEa4Ccu7BaJNZMETukAMH9DOFjMMssycnOiQMKYGggfCwgJJlxmVMu4MAmkFo&#43;Lvdr0ufjf/aAAwDAQACAAMAAAAQkW3JcgLMzs/HgCJXcioXTgFEG6NzzEJARZDMwkZPKQQAgrI36UkkkOwTYkkkjkoEkkkguFAAAAA//8QAGxEBAQEBAQEBAQAAAAAAAAAAAQARECEwIEH/2gAIAQMBAT8Q6ryUbCTPy4he7RBZwmFPvPU8Nr&#43;Qf7wLzNUYE5Fhsw2HEMAh943JmS0xZdjiamM/gjdsEnqz52M8a/httsCbKRXos&#43;DJw6XsWqwJ&#43;LzLOCPxbLOA&#43;b9v/8QAGxEBAQEBAAMBAAAAAAAAAAAAAQARECAhMDH/2gAIAQIBAT8Q4wHPvIWkO&#43;Jucc2wnVssCBDnHHRZmTZyWI5oRmHLUltwROp4SLaRFUrS2dVESju1&#43;rKBaY/WW9mBk64wjwznuxHYjILbIPNi3ViyzyLBB8CSTYZe3AfE6v0I4/P/xAAkEAEBAQACAQMEAwEAAAAAAAABABEhMVFhcZEQIEGhMIGx8f/aAAgBAQABPxD6OFZDIjT1kXD5nrLfe1CZvmxW18sbE79e6XIYTT8D5l2vyfRsIyK9vvO4s95&#43;b&#43;bsG492UnMZPz9hGfJOcb/dhUg6&#43;GLoO1n5EFQwk9HuGULd9YoYNL3OkGYZmt4jDQfe0zL3v9pY3hXJTF/DZEu13CnwHZ3OWXWOKTFMuZEUIpzRO0GEdwGuxQLDUZnx5nFF23q/iMb8rYI4bBHRCOi431YOPNT5DHdXWwWmYB/CFKMuzienZ8X/AArmUchrpjO7c0avoxRFm73NCFlpcjsgBAh4hmYgOi6oN6H4vR/EpDdJ2GTZB0gkXjIxYYb6yas9rOyQ8QoM&#43;4XXiESpZwjAoK0i7A&#43;l8u8ggCHiADD73q5IHG/qMl&#43;tJLv6KUHY9I8GZ6QAcfw/qX7F3nXdP4v/2Q== )" >
+        <img
+            class="lazyload"
+            src="/images/projects/tour_de_france/tour_de_france_web_editor_120x_blurred.jpg"
+            data-srcset="/images/projects/tour_de_france/tour_de_france_web_editor_320x.jpg 320w,
+                    /images/projects/tour_de_france/tour_de_france_web_editor_460x.jpg 460w,
+                    /images/projects/tour_de_france/tour_de_france_web_editor_640x.jpg 640w,
+                    /images/projects/tour_de_france/tour_de_france_web_editor_1080x.jpg 1080w,
+                    /images/projects/tour_de_france/tour_de_france_web_editor_1920x.jpg 1920w"
+            alt="Screen capture of the in-browser editor">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        I created a <a href="https://www.theguardian.com/sport/ng-interactive/2015/jul/23/tour-de-france-the-climb-of-alpe-dhuez-interactive?debug=true">GUI editor interface</a> that allowed me visually tweak animation values that were tweened between generating the animated transitions.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    

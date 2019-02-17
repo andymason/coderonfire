@@ -1,0 +1,271 @@
+http://128.104.138.26/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://128.196.12.29/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://129.65.126.20/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://129.89.28.32/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://131.111.125.248/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://148.61.97.229/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://152.1.130.216/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://193.252.210.246/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://195.200.199.8/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://212.142.228.68/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://213.138.74.86:2020/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://213.96.90.110:8080/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://217.197.157.7:7070/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://24.227.51.155/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://62.16.100.211/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://76.10.86.11/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://83.64.164.6/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://87.139.20.112/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://89.162.72.203/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://91.143.205.4/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://lv.raad.tartu.ee:10301/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://mu.webcam.oregonstate.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://rachleff.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://watch.sniffdoghotel.com:10250/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://watch.sniffdoghotel.com/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam.i2net.cz:8080/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam.magic.iac.es/axis-cgi/mjpg/video.cgi: HTTP/1.0 501 Not Implemented
+http://www.serveurperso.com:81/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://lv.raad.tartu.ee:10001/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://132.235.24.98/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://212.80.66.25/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://66.14.118.60/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://144.75.184.14/axis-cgi/mjpg/video.cgi: HTTP/1.1 404 Not Found
+http://webcam.ornellaia.it/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://webkamera.kristinehamn.se/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: webkamera.kristinehamn.se
+http://134.91.124.69/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://194.22.238.31/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam.oa-systems.nl/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: webcam.oa-systems.nl
+http://vmdf.aces.utexas.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://cam.sm.ukrtel.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://cam03.deninet.hu:8080/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://regacam1.tagblatt.com/axis-cgi/mjpg/video.cgi: HTTP/1.1 200 OK
+http://81.8.143.31/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://gw.lv.parnu.ee:8888/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://cam1.rauris.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://195.57.161.34/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://195.57.161.32/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://199.212.44.17/cgi-bin/mjpg/video.cgi: HTTP/1.0 200 OK
+http://140.120.200.61/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://140.120.75.187/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://grovecam.iup.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam.skedsmo.kommune.no/axis-cgi/mjpg/video.cgi: HTTP/1.1 404 Not Found
+http://regacam1.tagblatt.com/cgi-bin/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://gw.tallinnlv.ee:11082/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://cam002.ethz.ch/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://130.241.163.130/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://81.221.126.206:8088/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to 81.221.126.206 port 8088: No route to host
+http://217.86.174.228:8080/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://fatcam.dyndns.org/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://webcam.walgauwetter.at/axis-cgi/mjpg/video.cgi: curl: (28) Resolving timed out after 1510 milliseconds
+http://lolu.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://86.56.185.46/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://88.117.170.10/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://80.123.202.34:8080/axis-cgi/mjpg/video.cgi: HTTP/1.0 404 Not Found
+http://81.10.228.94/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://85.199.1.35/axis-cgi/mjpg/video.cgi: HTTP/1.1 302 Found
+http://83.228.34.185:2121/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://cam1.sliven.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://209.17.151.203/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://24.139.16.194:82/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://24.139.16.194:81/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://213.3.21.252/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://lesmartinets.dyndns.org:55182/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam.wauwilermoos.lu.ch/axis-cgi/mjpg/video.cgi: HTTP/1.1 200 OK
+http://217.151.112.243:5555/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://aps-m.axiscam.net:85/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://axis_648127.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://golfvuissens18.axiscam.net:8085/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://axis-lyss2.axiscam.net:8081/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://saentis.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://alcensocam.axiscam.net:8081/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://212.254.182.126/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam-roggwil2.bioforce.ch/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://flyingranch.dyndns.org:82/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to flyingranch.dyndns.org port 82: Connection timed out
+http://posta.mukolin.cz/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://213.226.208.230:10080/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://212.111.2.158/axis-cgi/mjpg/video.cgi: HTTP/1.1 501 Not Implemented
+http://195.113.207.238/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://stadtelstra.dyndns.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://lsvgzgw1.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://vfhcam1.fh-brandenburg.de/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: vfhcam1.fh-brandenburg.de
+http://landkirchen.dyndns.org/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://tauchen-hamburg.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://cam.spiegelwald.de/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam14.deg.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://heidbarghof.dyndns.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://212.6.91.123/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://217.22.201.135/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://baucam.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to baucam.axiscam.net port 80: No route to host
+http://rqd.dyndns.org:8091/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to rqd.dyndns.org port 8091: No route to host
+http://dno750.dyndns.org:1024/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://pendelcam.kip.uni-heidelberg.de/axis-cgi/mjpg/video.cgi: HTTP/1.1 200 OK
+http://dno750.dyndns.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://anw-dk.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://193.40.210.254/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://193.40.254.101/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://88.2.219.69:8003/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://cam.marinapremia.com:8000/axis-cgi/mjpg/video.cgi: curl: (56) Recv failure: Connection reset by peer
+http://88.2.215.148:6666/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://hoyagonzalo.dyndns.tv/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://telecentre.no-ip.org:8000/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://217.125.97.245:3333/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://iris.not.iac.es/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcamsantander.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to webcamsantander.axiscam.net port 80: Connection refused
+http://meteoibiza.axiscam.net:8080/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://217.30.178.109:46744/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://79.141.146.217/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://212.213.21.167/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://kamera2.turku.fi/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://webcam.ampere.inpg.fr/axis-cgi/mjpg/video.cgi: HTTP/1.1 200 OK
+http://80.13.189.135/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://serveurperso.com:81/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam.hahd.fr/axis-cgi/mjpg/video.cgi: HTTP/1.1 404 Not Found
+http://allseasons1.axiscam.net:3081/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://beachbeat.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://85.90.40.29/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://85.90.40.19/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://88.96.209.46:2220/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam2.swansea.gov.uk/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://webcam1.swansea.gov.uk/axis-cgi/mjpg/video.cgi: curl: (28) Resolving timed out after 1509 milliseconds
+http://84.92.80.192:8081/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://82.152.71.153:62943/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://fybmovewebcam3.axiscam.net:8196/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://fybmovecam1.axiscam.net:8194/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://cyclops.sunderland.ac.uk/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://weathercam.gsis.edu.hk/axis-cgi/mjpg/video.cgi: curl: (28) Resolving timed out after 1510 milliseconds
+http://161.53.240.140/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://77.221.39.163/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://77.221.39.162/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://193.6.11.238/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://194.105.250.197/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://157.157.90.207/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://157.157.89.198:83/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to 157.157.89.198 port 83: No route to host
+http://myndavel.ma.is/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://buffaure.realcam.it/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://bcdv.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to bcdv.axiscam.net port 80: Connection refused
+http://82.188.195.100/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://213.178.194.210:81/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to 213.178.194.210 port 81: No route to host
+http://janet.ing.unibs.it/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to janet.ing.unibs.it port 80: No route to host
+http://123.220.250.252/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://cam08.kaifu-intra.jp/axis-cgi/mjpg/video.cgi: curl: (28) Resolving timed out after 1510 milliseconds
+http://koreaccs.dyndns.org/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: koreaccs.dyndns.org
+http://201.166.63.44/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://vroomshoopwebcam.mine.nu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://131.174.53.158/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://84.246.0.104:84/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://brugburdaard.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: brugburdaard.axiscam.net
+http://bouwcam.windesheim.nl/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: bouwcam.windesheim.nl
+http://sbf.axiscam.net:9002/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://94.139.68.90:8092/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://193.213.47.217:85/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://79.170.84.126/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://194.19.11.26/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://honningsvag.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://spanstind.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://62.101.230.12/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://62.101.230.11/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://193.201.74.160/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://193.201.74.114/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://kamera.vadso.kommune.no:190/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://luvar.himolde.no/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: luvar.himolde.no
+http://webcam.datainstituttet.no/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://213.199.197.133:5000/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://most.gizycko.pl/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1000 milliseconds with 0 bytes received
+http://kamera.wseip.edu.pl/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://87.239.46.3/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://kamerykruklanki.mazury.info.pl/axis-cgi/mjpg/video.cgi: curl: (52) Empty reply from server
+http://79.189.44.171/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://83.142.61.30:8081/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://kamera.man.koszalin.pl/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://193.231.246.7/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam1.primariaarad.ro:8081/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: webcam1.primariaarad.ro
+http://147.91.111.148/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://212.42.54.136:8008/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://camera2.butovo.com/axis-cgi/mjpg/video.cgi: HTTP/1.1 404 Not Found
+http://82.208.95.234/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://212.42.54.137:8008/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://axis-7c5ffbwebcam3.axiscam.net:9000/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://axis-7cca2awebcam2.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://81.8.163.101:8082/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to 81.8.163.101 port 8082: Connection refused
+http://ulmingw.axiscam.net:9595/axis-cgi/mjpg/video.cgi: HTTP/1.0 404 File Not Found
+http://extcam-20.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-20.se.axis.com
+http://extcam-19.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-19.se.axis.com
+http://extcam-18.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-18.se.axis.com
+http://194.17.153.12/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://81.170.248.13/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://81.170.248.12/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://extcam-17.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-17.se.axis.com
+http://extcam-6.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-6.se.axis.com
+http://extcam-2.se.axis.com/axis-cgi/mjpg/video.cgi: curl: (6) Could not resolve host: extcam-2.se.axis.com
+http://smogen.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://noliakameran.net.umea.se/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://194.218.96.169/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://81.8.158.58/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://81.8.176.2/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://webcam2.stromstad.se/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://210.243.41.156/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://japkacam.axiscam.net/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://128.101.105.82/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://129.79.60.133/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://209.222.195.10/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://beach.sandestinwebcam.com/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://madriverweathercam.com:8888/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://67.53.34.94:4002/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://166.89.65.156/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://166.89.65.155/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://166.89.65.154/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://74.94.55.182/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://131.118.32.130/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1000 milliseconds with 0 bytes received
+http://dcccam.winthrop.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://myapplecam.com/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://66.231.33.19/axis-cgi/mjpg/video.cgi: HTTP/1.0 403 Forbidden
+http://lwsnb131-cam.cs.purdue.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://70.88.152.30:10000/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://webcam.atlanticeyrielodge.com/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam01pd.frenchlick.com/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to webcam01pd.frenchlick.com port 80: No route to host
+http://webcam.apexnc.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://lwsnb148-cam.cs.purdue.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://lwsnb160-cam.cs.purdue.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://lwsnb158-cam.cs.purdue.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://64.139.100.67:60001/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1000 milliseconds with 0 bytes received
+http://norwalk.axiscam.net:2222/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://surfcam.castleinthesand.com/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://155.92.196.35/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://161.13.1.35/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to 161.13.1.35 port 80: Connection refused
+http://198.150.52.78/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://71.35.77.53:46004/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://dogsaspen.dyndns.org:8081/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://216.99.115.136:8080/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam1.lpl.org/axis-cgi/mjpg/video.cgi: HTTP/1.1 302 Found
+http://148.61.161.209/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://131.204.99.178/axis-cgi/mjpg/video.cgi: HTTP/1.1 401 Unauthorized
+http://198.214.229.110/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://67.53.34.94/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://209.143.33.109/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://198.182.247.192/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://72.240.51.211/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://dogsaspen.dyndns.org:8084/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://flyersboats.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://billcam.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (7) Failed to connect to billcam.axiscam.net port 80: No route to host
+http://hartohj.axiscam.net:5700/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam.erieyachtclub.org/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://greenhousecam.hort.cornell.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://149.43.156.109/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://134.84.117.226/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://towercam.uu.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://146.139.72.67/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://63.138.232.19/axis-cgi/mjpg/video.cgi: curl: (28) Operation timed out after 1001 milliseconds with 0 bytes received
+http://146.139.72.75/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://192.203.224.2:8080/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds
+http://stackscam.lib.wsc.ma.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://128.118.52.239/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://fremontca.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://monet-cam.as.utexas.edu/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://climatecam.gi.alaska.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://21-09cam.axiscam.net/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1000 milliseconds
+http://128.253.181.41/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://c-cam.uchicago.edu/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://66.212.195.106/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://webcam.teuva.fi/axis-cgi/mjpg/video.cgi: HTTP/1.0 200 OK
+http://198.237.71.47/axis-cgi/mjpg/video.cgi: curl: (28) Connection timed out after 1001 milliseconds

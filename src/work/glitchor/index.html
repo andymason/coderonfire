@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>Glitchor - Andrew Mason </title>
+
+    <meta name="description" content="Creative technologist making interactive experiences, developing front-ends and exploring glitch art.">
+    <meta name="author" content="Andrew Mason">
+    <meta name="keywords" content="interactive, developer, frontend, webgl, JavaScript, CSS, HTML5, artist, glitch, VR">
+
+    <style>/* @import url('normalize.css'); */
+
+/* Base Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.4;
+    font-weight: 400;
+    color: #222;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 3.0rem;
+    line-height: 1.2;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: -.1rem;
+}
+
+h4 {
+    font-size: 2.0rem;
+    line-height: 1.35;
+    letter-spacing: -.08rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    letter-spacing: -.05rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+}
+
+
+/* Larger than phablet */
+
+@media (min-width: 550px) {
+    h1 {
+        font-size: 5.0rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
+    h3 {
+        font-size: 2.4rem;
+    }
+    h4 {
+        font-size: 2.1rem;
+    }
+    h5 {
+        font-size: 2.0rem;
+    }
+    h6 {
+        font-size: 1.8rem;
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+
+/* Typography
+-------------------------------------------ooo */
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */            
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:    url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff2') format('woff2'),
+            url('/fonts/PT_Sans/pt_sans-web-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-regular-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-regular-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Catamaran';
+    src:    url('/fonts/Catamaran/catamaran-bold-webfont.woff2') format('woff2'),
+            url('/fonts/Catamaran/catamaran-bold-webfont.woff') format('woff');   
+    unicode-range: U+000-5FF; /* Latin glyphs */        
+    font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:active,
+a:visited {
+    text-decoration: none;
+    /* color: #00B8FF; */
+    color: #00FCAD;
+}
+
+
+/* Structure
+-------------------------------------------ooo */
+
+html,
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #00001b;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #FFF;
+}
+
+body {
+    overflow-x: hidden;
+}
+body.no-webgl {
+    background-image: url(/images/blocks_no_webgl.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% auto;
+}
+@media (min-width: 750px) {
+    body.no-webgl {
+        background-size: 70vw auto;
+    }
+}
+
+@media (min-width: 550px) {
+    body {
+        /* background-position: 0 -27vh;
+        background-size: 100%; */
+    }
+}
+
+@media (min-width: 750px) {
+    body {
+        background-position: 0 -27vh;
+        background-size: 100%;
+    }
+}
+
+.container {
+    /* color: #afb6d1; */
+    color: #e8e8e8;
+}
+
+
+/* Site top
+-------------------------------------------ooo */
+
+.row--top {
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 750px) {
+    .row--top {
+        margin-bottom: 8em;
+    }
+}
+
+
+/* Header
+-------------------------------------------ooo */
+
+.header {
+    font-family: 'Catamaran', 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.1rem;
+}
+
+@media (min-width: 750px) {
+    .header {
+        font-size: 2.1rem;
+    }
+}
+
+.header--subtitle {
+    font-weight: 700;
+    display: block;
+    font-size: 1em;
+    line-height: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .homepage .header--subtitle {
+        line-height: 3rem;
+    }
+}
+
+.header a {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+}
+
+.header a:hover {
+    color: #00FCAD;
+    text-shadow: 0 0 10px #0000004d;
+}
+
+.homepage .header a {
+    color: #FFF;
+    cursor: default;
+}
+
+
+/* Navigation
+-------------------------------------------ooo */
+
+.navigation {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 1.8rem;
+    font-family: 'Catamaran', Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 750px) {
+    .navigation {
+        border: none;
+    }
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-right: 1px solid #FFF;
+    line-height: 2.6rem;
+}
+
+.navigation ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation ul {
+        border: none;
+    }
+}
+
+.navigation li {
+    margin: 0 1rem 0 0;
+    display: block;
+    float: right;
+    clear: both;
+}
+
+@media (min-width: 750px) {
+    .navigation li {
+        display: inline-block;
+        margin: 0 3rem;
+        float: none;
+    }
+}
+
+.navigation .active {
+    font-weight: 700;
+}
+
+.navigation a {
+    color: #FFF;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #00FCAD;
+}
+
+.navigation a:after {
+    content: ".";
+    display: block;
+    background: transparent;
+    height: 2px;
+    width: 0;
+    overflow: hidden;
+    text-indent: -1000px;
+    -webkit-transition: width 0.2s, background-color 0.2s;
+    transition: width 0.2s, background-color 0.2s;
+    margin: 0 0 0 auto;
+}
+
+@media (min-width: 750px) {
+    .navigation a:after {
+        margin: 0 auto;
+    }
+}
+
+.navigation a:hover:after,
+.project a:hover span:after {
+    background-color: #00FCAD;
+    width: 100%;
+}
+
+.project span:after {
+    margin: 0 auto;
+}
+
+
+/* Section
+-------------------------------------------ooo */
+
+.sectionHeading {
+    clear: both;
+    padding-top: 8rem;
+    font-size: 2.6rem;
+}
+
+
+/* Projects Grid
+-------------------------------------------ooo */
+
+.projectsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem 0;
+    grid-auto-rows: auto;
+}
+
+@media (min-width: 550px) {
+    .projectsContainer {
+        grid-gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* margin: 0 -7.8%; */
+    }
+}
+
+@media (min-width: 900px) {
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        /* grid-auto-rows: minmax(10rem, auto); */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1500px) {
+    .projectsContainer {
+        margin: 0 0 0 -100px;
+        width: calc(100% + 200px);
+    }
+}
+
+.content .projects__header {
+    grid-column: 1/1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    color: #00fcad;
+}
+
+@media (min-width: 550px) {
+    .content .projects__header {
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 900px) {
+    .content .projects__header {
+        grid-column: 1/4;
+    }
+}
+
+.project {}
+
+.project a {
+    text-decoration: none;
+    display: block;
+    /* background: linear-gradient(to top, #00dd89 0%, #001759 50%, #000017 100%); */
+    color: #FFF;
+    position: relative;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+@media (min-width: 900px) {
+    .project a {
+        /* font-size: 2.8rem; */
+    }
+}
+
+
+/* .project a:after {
+    content: ".";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #00c79d;
+    opacity: 0.3;
+} */
+
+.project a:hover {
+    color: #00c79d
+}
+
+.project a:hover img {
+    border-color: #00c79d
+}
+
+.project span {
+    display: inline-block;
+    /* border-top: 4px solid #FFF; */
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.7rem;
+    padding: 0.6rem 0 1.3rem 0;
+}
+
+@media (min-width: 550px) {
+    .project span {
+        font-size: 1.7rem;
+    }
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    /* border: 2px solid transparent; */
+    /* transition: border-color 0.3s; */
+}
+
+
+.project__imageWrapper {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.project__imageWrapper:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    left: -20px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#00c79dff), color-stop(10%, #00c79d80), color-stop(90%, #00001b00));
+    background: linear-gradient(to top, #00c79dff 0%, #00c79d80 10%, #00001b00 30%);
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+@media (min-width: 550px) {
+    .project__imageWrapper:after {
+        right: 0;
+        left: 0;
+    }
+}
+
+.project a:hover .project__imageWrapper:after {
+    opacity: 1;
+}
+
+.project a:hover img {
+    /* border-color: #00c79d; */
+}
+
+
+/* Page content
+-------------------------------------------ooo */
+
+.title {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+figure {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+@media (min-width: 550px) {
+    figure {
+        margin: 4rem 0 2rem;
+    }
+}
+
+@media (min-width: 900px) {
+    figure {
+        margin: 6rem 0 2rem;
+    }
+}
+
+.showcase .showcase__link {
+    border: none;
+    text-decoration: none;
+}
+
+.showcase--wide {
+    width: calc( 4rem + 100%);
+    margin-left: -2rem;
+    height: auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 550px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 22rem + 100%);
+        margin-left: -16rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .showcase--wide,
+    .showcase .video-container {
+        width: calc( 20rem + 100%);
+        margin-left: -20rem;
+    }
+}
+
+.showcase--wide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* .Work .content img,
+.video-container {
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 0 -20px;
+}
+@media (min-width: 400px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -36%;
+        width: 151%;
+    }
+}
+@media (min-width: 1200px) {
+    .Work .content img,
+    .video-container {
+        margin: 0 -21%;
+        width: 121%;
+        box-sizing: border-box;
+        border: 4px solid #FFF;
+    }
+    .Work .content img {
+        border: 4px solid #FFF;
+    }
+} */
+
+.content h2,
+.content p,
+.showcase figcaption {
+    max-width: 640px;
+}
+
+.content p {
+    line-height: 1.4;
+    /* margin: 0 0 2.6rem; */
+}
+
+.content a {
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.content a:hover {
+    border-color: #00c79d;
+}
+
+.homepage .content a {
+    border: none;
+}
+
+.content h2 {
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+h2.content__section {
+    font-weight: 500;
+}
+
+.tags {
+    list-style-type: none;
+    padding-left: 0;
+    display: none;
+}
+
+.tags li {
+    display: inline-block;
+    font-size: 1.3rem;
+    background: #00B8FF33;
+    padding: 2px 11px;
+    margin: 0 0.1rem 0.3rem 0;
+    border-radius: 4px;
+}
+
+.tags li:hover {
+    background-color: rgba(4, 188, 255, 0.308);
+}
+
+.tags a {
+    text-decoration: none
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 62.7%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    width: calc(4rem + 100%);
+    margin-left: -2rem;
+}
+
+@media (min-width: 750px) {
+    .video-container {
+        padding-bottom: 72.6%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .video-container {
+        padding-bottom: 67.6%;
+    }
+}
+
+.video-container iframe {
+    border: none;
+}
+
+.video-container iframe,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video--mobile {
+    display: block;
+    border: 4px solid #FFF;
+    width: calc(100% + 40px);
+    margin: 0 auto 1rem -20px;
+    max-width: 300px;
+}
+
+@media (min-width: 400px) {
+    .video--mobile {
+        margin: 0 auto 1rem auto;
+        width: 100%;
+    }
+}
+
+@media (min-width: 900px) {
+    .video--mobile {
+        -webkit-transform: translatex(-40%);
+        transform: translatex(-40%);
+    }
+}
+
+
+/* Grid
+-------------------------------------------ooo */
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-template-rows: minmax(8rem, 16vh) 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "header navigation" "section section" "content content";
+}
+
+@media (min-width: 750px) {
+    .container {
+        padding: 2rem 6rem;
+        grid-template-rows: minmax(14rem, 16vh) 1fr;
+        grid-template-columns: 10rem 1fr;
+        grid-template-areas: "header navigation" "section content";
+    }
+}
+
+@media (min-width: 750px) {
+    .container {
+        grid-template-columns: 20rem 1fr;
+        padding: 12vh 8rem;
+    }
+}
+
+.homepage .header {
+    grid-area: header;
+    -ms-flex-item-align: center;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 3.1rem;
+    padding: 0 0 2rem;
+    /* border-bottom: 1px solid #FFF; */
+}
+
+@media (min-width: 550px) {
+    .homepage .header {
+        font-size: 3.6rem;
+        padding: 0 8rem 2rem;
+    }
+}
+
+@media (min-width: 750px) {
+    .homepage .header {
+        font-size: 4.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homepage .header {
+        font-size: 6.6rem;
+        -ms-flex-item-align: center;
+        align-self: center;
+        padding: 0 8rem 3rem;
+    }
+}
+
+.content {
+    grid-area: content;
+}
+
+.section {
+    grid-area: section;
+    display: none;
+}
+
+@media (min-width: 550px) {
+    .section {
+        display: block;
+    }
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.homepage .navigation {
+    /* justify-self: center;
+    align-self: start;
+    border: none;
+    font-size: 3rem;
+    padding: 3rem 0; */
+}
+
+.homepage .container {
+    position: relative;
+    z-index: 2;
+    grid-template-rows: minmax(7rem, 4vh) minmax(26rem, 32vh) auto 1fr;
+    /* grid-template-rows: minmax(9rem, 19vh) minmax(13rem, 45vh) auto 1fr; */
+    /* grid-gap: 4rem; */
+    /* grid-auto-rows: 900px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: "navigation" "header" "skills" "content";
+}
+
+@media (min-width: 550px) {
+    .homepage .container {
+        grid-template-rows: 10vh 37vh 26vh 1fr;
+    }
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100rem;
+    margin: 0 auto;
+    grid-area: skills;
+    grid-gap: 1rem;
+    line-height: 1.9rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 550px) {
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        line-height: 2.4rem;
+    }
+}
+
+.skills__item {
+    padding: 0;
+}
+
+@media (min-width: 550px) {
+    .skills__item {
+        /* padding: 0 6rem; */
+    }
+}
+
+.skills__item h2 {
+    margin: 0 0 1rem 0;
+    color: #00FCAD;
+}
+
+@media (min-width: 550px) {
+    .skills h2 {
+        margin: 0 0 0.3em 0;
+    }
+}
+
+.renderCanvas {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    /* border: 1px dashed red; */
+}
+
+.stars {
+    background-image: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    width: 100%;
+    background-image: url(/images/stars_tile.png);
+    background-color: transparent;
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+
+/* fade image in after load */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 300ms;
+}</style>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/fav_icon_16x.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/fav_icon_32x.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/fav_icon_96x.png">
+    <link rel="apple-touch-icon" href="/images/icons/fav_icon_180x.png">
+
+    <meta name="robots" content="index,follow">
+</head>
+
+<body class="Work ">    
+
+    <div class="container">
+       
+            <header class="header">
+                <a href="/">Andrew Mason
+                    <span class="header--subtitle">Creative Technologist</span>
+                </a>
+            </header>
+    
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="/">Work</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+            </nav>
+    
+
+<main class="content">
+    <article>
+        <h1 class="title">Glitchor</h1>
+        <p>Glitching or Databending is about manipulating data to introduce artifices that result in distortions from the original source. To explore data-bending more I created <a href="/experiments/vhs">Glitchor</a>, a tool that let me create my own glitched images.</p>
+
+<p>By directly manipulating the RGB data-structure of a source image I am able to generate unique artistic results.</p>
+
+<ul class="tags">
+
+    <li><a href="/tags/personal">Personal</a> </li>
+
+    <li><a href="/tags/javascript">JavaScript</a> </li>
+
+    <li><a href="/tags/image-manipulation">Image manipulation</a> </li>
+
+    <li><a href="/tags/glitch">Glitch</a> </li>
+
+</ul>
+
+<figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+        <a href="/experiments/vhs" class="showcase__link">
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAwECBAUGAAf/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAB8yZkWRgo9QUsnDVFKJWiCHGm3w2TlW72ey0ms7cz4aMaoOXdstSQRo00vTh6rrMVXJEWvuZRRh5cxy9EuIKxiOQTXb4&#43;ibwVaorLLKQV1lEdFFy7w5pDjga7HfHZb5nWGVNhUKufK2IPLtCm0OEGLbb4&#43;n75hWpsiJMEXIkeAcu7ZqyAlcBD75&#43;nb5GWGkajJFaxgCROXdZp4wigy0udVrJhhWkMYVAMLnbpeEBgAoQVEUYM4QQUU44QQ//EACUQAAICAgEDBAMBAAAAAAAAAAECAAMEESEFEBITFCAiIzEyM//aAAgBAQABBQKqryhxWhoaLisYcR4aGnt2nt2hx2hqMKzXwwdSrHDV3Y4BxKttkUKqGsFkxx4&#43;ku7qFClQS2LxbSVhBmu3TRtsRB6N9AJpqVJmtuVU7j/VTbqy2zdXnqw5I09itPpLAIROkrzW&#43;lLcXXFY9nkcduMk8Xf2W/HZ&#43;yZub7POkEQQGXBTHUSoyzkZOhC3DwzU12edNt1ZQd12NLWOyTKpkNpb7NsW48u2OqGZCqOzmYf&#43;mM/4TzHSa1FImUfpZ/RPcMRGYmHtigbTJARcoRssS7LnvDLMssGfnygM3NzcMMVjPNp5tPNoWPy38f/EABwRAAIDAQEBAQAAAAAAAAAAAAABERIgAhAwQP/aAAgBAwEBPwGSxJYkksSTvsU&#43;T5JJImLXYvIzyLXXwQtdfHnXXwQtdaQxC00VKlSpUqVKi/L/AP/EABsRAAMBAQEBAQAAAAAAAAAAAAABESAwEgJA/9oACAECAQE/ASEIQhCE2kTEw9fPBj0uDHpcXpcXpcXpMpSno9Ho9F/N/8QAHBAAAgIDAQEAAAAAAAAAAAAAADEBERAgMCFA/9oACAEBAAY/AhYQsoXBCELCzResaUXygr7Ygvl6eZgjtZVjH1Yx9P/EAB0QAAMAAwEBAQEAAAAAAAAAAAABERAhMUFRYXH/2gAIAQEAAT8haukQUIOQ4YSXQk&#43;Cd5jIoI&#43;DFg1m0RWBiCIG1gn0hemE&#43;YhzcH1EXBwfENsMFEvzC9oRRjeLFKd/DfbNWdgaEOiRdxOFqHkQ3YKRs0K2OanZjKUUWiECFbVNG8co9DUN0HYVGwuxOxshHI&#43;wJX&#43;By4ekWnGymNbvCY0xIHAqRQZopbPBpLDRtkHRV7H3wdIzls7DHY2KqwrAnhXwYlekDS1YLJJGhOCHHnZkd6ysrG8VlFZWV4//2gAMAwEAAgADAAAAEGH0G8wIAN5y2cJAHNFjGrJB2kOB&#43;ACP8qQVxBb3qQCkAAa05ROhJAwJpZBJBACBJBAJJ//EABwRAAMAAwEBAQAAAAAAAAAAAAABERAgMSEwQP/aAAgBAwEBPxBySSQSSQSKxbMz2Kyi&#43;DKbD2&#43;Ag0IPhKJDR1uU5lsWGd6kPU8LC7qQxRYeUM6OdWzkWIQggh0c7U2Cgwgk/L//xAAbEQEAAwEBAQEAAAAAAAAAAAABABEwIEAQIf/aAAgBAgEBPxAOXvx0rqwh&#43;oESB8VKiYTBlwi7th4W77vvejHhW/L/AP/EAB8QAQEBAAIDAQEBAQAAAAAAAAEAESExQVFhkRChsf/aAAgBAQABPxAg6XBl&#43;XKWO1Py3z&#43;Vilxej/JLy/LRKtDVKYlqx/p2g5uI7p6lrH5DmM31cWDnqyB79WUHXqf/AOaCp69Q9N23cTLDqE5qHyj/AA38aQzBrECBmxfE0i0uOrf&#43;rmLwQtz5nTYBlxs4aOpF4THcJrybMm456mGcwtHszXSJMOi&#43;IfgRK&#43;pRLwmv0Xlm&#43;l9IS5iCOOmxARGHNKpttmXFi5AqpYibMhvFkM27qhu4Mjz/AA6cNtrcs0NyVzk9lmpxK4eiHHhsJjbbdgfW5CJ9olEXAmI9k2iBTEtC7YTMXgJKg6j7/NxdxAPMJyFv6MBme5EAyOI4Pcf1/ZXQ/Yzf&#43;8t3nLXMza7lrZOX&#43;W3mT5tyxvEX0X0R7sntXYLfa&#43;0lsB5vpfaPdLeZv//Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/glitchor/glitchor_screenshot_01_120x_blurred.jpg"
+            data-srcset="/images/projects/glitchor/glitchor_screenshot_01_320x.jpg 320w,
+                    /images/projects/glitchor/glitchor_screenshot_01_460x.jpg 460w,
+                    /images/projects/glitchor/glitchor_screenshot_01_640x.jpg 640w,
+                    /images/projects/glitchor/glitchor_screenshot_01_1080x.jpg 1080w,
+                    /images/projects/glitchor/glitchor_screenshot_01_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+        </a>
+    
+
+
+
+    <figcaption>
+        I have a personal soft-spot for the aesthetic of old CRT TV signals. Therefore, I create a profile that closely replicates the look of early TV broadcast.
+    </figcaption>
+
+</figure>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAgQAAwUBBgf/xAAZAQEAAwEBAAAAAAAAAAAAAAAAAgMEBQH/2gAMAwEAAhADEAAAAflLw/fK/Jz3wvawjPj3pwMEE4cIMe17V&#43;C6q2ic37eRmZugM7C8AkzXqtSyREEEZVer28fYqypWROOfDr6Vk606tK8tbNWzR8miLC4iO3ZvXdDl61vMCWVCrck2s3c1DNryKuxXj2LVy4QErGd9PqepzNGzN2eWiM0mwba64V5uHsp8nZylwEoKx3q1ei7HP9K4lE4Z1t1E77J000&#43;4eHspcDoBnlCAlQ31Ktrr8701nF7OtSU57YavPz6MLJ1czidCqiyEIQ3ba9rRlflnL2tJ4r56LxWM0Y6M3NsqjZCEIXFjzpwrAIcBI9hCEIf/xAAiEAACAgMAAgIDAQAAAAAAAAAAAQIDBBESECETIBQiMDH/2gAIAQEAAQUCihwOGcM&#43;NnLOWcs5ZwxxNfSspr6ToOPapXNsFuMEOKOUVxTJYvq2lxGma8Vf7hJE61r4VuxajKG5KvRbtHRTPTeStTsjI/QsURopRhRWvRLROaPW1zq9RGluTG2bZtmxspMVvWpnLJwJQFFk4ssj50NDXipmHZ7i1qcicjoTLpaVkxyOzs6G/FcWzFhLdaepQZKlkaGfDoyK3qypk1r7YriQsgiOTAeXAtzUfnjzyeZsnfsm9v6xk0dyO5HchyZs3/H/xAAhEQACAwACAgMBAQAAAAAAAAAAAQIDEQQhEiAUMDEQE//aAAgBAwEBPwE0Q&#43;j/AEQnv1SZbd4lPJ0uu6HyX5FV/RLkCvI26J&#43;0jlld3iXclsr7YpYh2lctIRI&#43;1jL&#43;yzo7bKIE10TUtKGyoXtZEsh2ThElWiDwjLSaiQktOO9XvNl/4W2vRTZFikTkypaynoi/aZf&#43;E4dmYKR5DkUyK5kH7SWkqNHwx8E&#43;AfCPgC4WEOPhFZ9OfzDPp//EACIRAAICAQQCAwEAAAAAAAAAAAABAgMREhQgIQQQEzAxQP/aAAgBAgEBPwEx6wafWDH0IS6JdFfZPCM&#43;3zSIw6JUtkKsFkWRqHWzQaRrlXHJCPQqx1kqyFQ6iVI4E1y8eJGAkYNAoGglUWwwW/vLxURj0aBQFAUDQTRdHov/AHl4ssELUfKhWI&#43;ZG4ibhE7kW2dFz75Qswbhm5Zumbpm5ZuWbgd&#43;STz/AC//xAAaEAACAgMAAAAAAAAAAAAAAAAAMRFAITBg/9oACAEBAAY/ArEE8hmgxj2f/8QAHhABAQACAgMBAQAAAAAAAAAAAQAQESExIEFRYXH/2gAIAQEAAT8hBk9E/CPhfjJeoyQMdSGCZ7wdER6gmurkUi6avmj4h&#43;Fvhi&#43;KVgxwbkzs6uFJoQQSFcm3FXcSTQ4tTEpALf1aS6ktNRhEmk48ETd1tsmnWLac4X3xBlHNrktFpkmIiASrq6l33K3iCN63P4HbN1EA4d&#43;CiVghN2x5FI36hHZfQQemNbd7xDPmnROdmze22&#43;20rb8//9oADAMBAAIAAwAAABCgQLrQCABoDsnCQBVJ9NSSQVpG7bQAXKVINyQQebUUFSSCChu1MAAcVLzxgAAXbNugAAf/xAAbEQADAQEBAQEAAAAAAAAAAAAAAREhECAxQf/aAAgBAwEBPxBuEiXloIDzl9yGvyrQzEx2mRGNDWLL3&#43;s4cETd8tLYpDSnx6gOVfwNg/dkciGRV6U0LnllFyNLRN1F4lNPuFsCAk9YDRmYQ994wQ0PC1RResoesOfBMWDYWmLZRephxoVEFI6fM1yae4iEERBBET3/AP/EAB4RAQEBAAEFAQEAAAAAAAAAAAEAESAQITFBYTBR/9oACAECAQE/ELVkJlFlq1Y80bCzEQohYWMyEWxk8kWZqFjnTMItDOyweSKUm1iSs23bmlCyeQMGQEhncpDbsXeQzk2jY4ekENgiINQx8h8oBC9GDITn5lMLNuRKF7gvcf0vtLe77S5haue222222/h//8QAIRABAQEBAAIDAAIDAAAAAAAAAQARIRAxQVFhIHGRobH/2gAIAQEAAT8QNkEBfaX8rnu/8XvlK&#43;G/Nu3pt5qUxLVj57Iwj2jF/wCYT9v1NxfUiAmdYhmFu7hZgNt3Eyw9QnNQ&#43;o&#43;OHxo5sPUFrAQfibafNrQt5jes2H6rN2erQ47Md5MeTZktQtUEucRJaJIVXf5dbkowJh4Al9t&#43;zP2Mu9YhI5Rcm2724jYXXex&#43;kFms41Il27Ys04XDk0EgDbYEfeeogzSjYSdnN7F439vDLGJ6wxhnBGUTvqFkO3sIycgtEzKNtttvgjxFkZkv90YrTygfEljG6yg522n&#43;RnUj7l&#43;2V872i&#43;N&#43;sr5tff8AP//Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/glitchor/glitchor_screenshot_02_120x_blurred.jpg"
+            data-srcset="/images/projects/glitchor/glitchor_screenshot_02_320x.jpg 320w,
+                    /images/projects/glitchor/glitchor_screenshot_02_460x.jpg 460w,
+                    /images/projects/glitchor/glitchor_screenshot_02_640x.jpg 640w,
+                    /images/projects/glitchor/glitchor_screenshot_02_1080x.jpg 1080w,
+                    /images/projects/glitchor/glitchor_screenshot_02_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        The JPEG data format can be delibrately broken to create striking colour banding that exposes the underlying algorithm.
+    </figcaption>
+
+</figure></p>
+
+<p><figure class="showcase">
+
+
+
+
+
+
+    
+    
+    
+
+
+    
+
+    <div class="showcase--wide" style="background-image: url( data:image/jpg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCABEAHgDAREAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAAECAwQFBgf/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/9oADAMBAAIQAxAAAAH5RaFZUCQaXFhIiVKiEIQEeqFuFpxeddWtKusouRTVy8nUjPlzGEiRF1WnttdTq28/p7MNeb18KTZXZM9OXideuWBOYzmEXRv0I9vpcvsX59lV8cW/muL216KrcdT5imuMAArStu30fH9ZZTvz65CIXzlW6RTfix2&#43;TrrzoCsrI9G/d5vo5x249&#43;PQ6K9Ma61CLCjPwHTIIFJUWb9eq3oKYa1WvLj185RAl1aOJLOACJUdK&#43;22dZyhE82/PhtiCFEywkgAAFxMYisgAhAAAAH/xAAiEAACAgIBBAMBAAAAAAAAAAAAAQIRAxIQISIwMQQTIBT/2gAIAQEAAQUCQ/BRRX7SNWUUUUYIbP8Ak7c2FxKZXKQoGLETxLWUeqRqOJ8d6t/JVTnGR2GRIaEjFjshjRSRNjQompJcO/xMxe8MO2XQcj2VzMb5ZZJkHTxZqi8tjn1U6TzI&#43;4&#43;1Esp75Y1xCI0xJlMyyZbLLExSNzc2G&#43;MCRrE1iNRMyRRRXgi2byN5G8ht&#43;P8A/8QAJBEAAgICAQMEAwAAAAAAAAAAAAECAwQRIBITFAUhIjEVMkD/2gAIAQMBAT8B46Ok6DoNc9GiNbZ2WKsUDtk4DHxSI17I4zZj4RbiaHUKsVJbV7Fn3yqjsxsXZXiJEK1EvQ6tkKTtGTHUS775Yv2Y2tGx26JfI7YopDMlfEv/AG5US0ynI6URy00TyPkLKUUP1BH5BHnovzU4lstvlRDbJR9iG0KL3sybWdxncZ3GdTY&#43;ULek8lnks8lk59Ro0aF/N//EAB4RAAICAwEBAQEAAAAAAAAAAAABAhEDEhMgITFA/9oACAECAQE/AVGzmczmaGhoamo/WJFFDoteGT9YyxzMmUjldikWbFkvUCeQlkLsihMcixMfpfhkn9Ea&#43;UP1FfCeG2LFQoCxWcjkcjmS9RYmOiyHiRP0mbGxsLJR1Op1HkG/5f/EABcQAAMBAAAAAAAAAAAAAAAAAAAwMWD/2gAIAQEABj8C3NKVn//EAB4QAAMAAgIDAQAAAAAAAAAAAAABERAhMVEgQWEw/9oACAEBAAE/IZJKXMIQTsvBrLbNkGs&#43;QisDGgHyDAfUNsQuPfo37QmIYKwlXZqznBoQ6JFmdIS9C4hqhV&#43;GvQ9FZXhBKVbCDbBqMUkhiaIDYmMOSuJ0zEixTtxI7PsIaExCCDhlGRaFRWogoMrLGEvA1GNrZ9ELtR30etnYS80uHkRge5eX&#43;H//2gAMAwEAAgADAAAAEG2kFAgIBvihs8hAExtdQzJBhrFgqJKIHZC2BBDaBnKRBAI6OGuJIAOfiTWAABBIAAAAB//EAB0RAQEBAAMAAwEAAAAAAAAAAAEAESAhMRBBYUD/2gAIAQMBAT8Q2222yEw23KJXJhW/gALCKJiWRlx0mn1FqdkJ8s23uqypxcteT5UgPISFLZdtgLUj34ExE7EiAEaywIG/AZi3e3HZTiFb01tkbsbH8bb7tfuTG2m8u8m6DAvbuDE6Gdfb9b94oOSePjIcp33wHSXf5f/EABwRAAMAAwEBAQAAAAAAAAAAAAABERAgITEwQP/aAAgBAgEBPxBwooossosbnGyGiSCGBpDSIhFBHRauORCILgwLIZeH1s8RIYxuOxFZdN7QO4HouBVMrG2L4VMIYORQeR406Fm00IozEyEw4RERCQ/dp7idlUWf5f/EAB4QAQEBAAIDAQEBAAAAAAAAAAEAESExEEFhUTBx/9oACAEBAAE/EBnmx6kb4DHMJty4jgkvU4sfIum1WroSA7Ug9Xzj5s/UJEneH1IsOojmofKPh0yekjCRWgA3I0AtXq4erI6jHqsjZ1OvCY9E15NmTNkTYWCmiJ4Tbjb5fCwHVkMcPLU5b6s/qwq8xBEI/tmY9XIz1AbMW1xfCZuazpLX1APUedQrxVB&#43;wCnqLcbqX3ElW9xJdn6TLjCtsSZc8QJMaRSagPdzqwRZT231vrJeVsPd/rw5xiesQUQvfgYQchyqGefjjYNtttvk/ovsvqkdq9iWtrLf4f/Z )" >
+        <img
+            class="lazyload"
+            src="/images/projects/glitchor/glitchor_screenshot_03_120x_blurred.jpg"
+            data-srcset="/images/projects/glitchor/glitchor_screenshot_03_320x.jpg 320w,
+                    /images/projects/glitchor/glitchor_screenshot_03_460x.jpg 460w,
+                    /images/projects/glitchor/glitchor_screenshot_03_640x.jpg 640w,
+                    /images/projects/glitchor/glitchor_screenshot_03_1080x.jpg 1080w,
+                    /images/projects/glitchor/glitchor_screenshot_03_1920x.jpg 1920w"
+            alt="">
+    </div>
+
+    
+
+
+
+    <figcaption>
+        Images generated in the tool can be exported as PNGs or uploaded directly to imgur by using base64 encoded data-urls.
+    </figcaption>
+
+</figure></p>
+
+    </article>
+</main>
+
+<section class="section">
+    <h2 class="content__section">Work</h2>
+</section>
+    </div>
+    
+    <script src="/js/libs/picturefill.min.js"  async></script>
+    <script src="/js/libs/lazysizes.min.js"  defer></script>
+    <script src="/js/libs/alea_prng.min.js"  defer></script>
+    <script src="/js/libs/three.min.js"  defer></script>
+    <script src="/js/libs/TrackballControls.js" defer></script>
+    <script src="/js/main.js"  defer></script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11438002-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-11438002-1');
+    </script>
+
+</body>
+
+</html>
+    
